@@ -1,3 +1,16 @@
+<?php
+
+try {
+    $connexion = new PDO("mysql:host=localhost; dbname=login", "root", "");
+} catch (PDOException $erreur) {
+    echo "Problème à la connexion : " . $erreur->getMessage();
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang='fr'>
 <head>
