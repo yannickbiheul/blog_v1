@@ -1,11 +1,10 @@
 <?php
 
 try {
-    $connexion = new PDO("mysql:host=localhost; dbname=login", "root", "");
+    $db = new PDO("mysql:host=localhost;dbname=blog", "root", "");
 } catch (PDOException $erreur) {
     echo "Problème à la connexion : " . $erreur->getMessage();
 }
-
 
 ?>
 
@@ -41,22 +40,33 @@ try {
     <main>
         <h1>Liste des articles</h1>
 
-        <div class="article">
-            <div class="articleHeader">
-                <div class="articleInfos">
-                    <p><i class="fas fa-user"></i>Auteur</p>
-                    <p><i class="far fa-clock"></i>Date</p>
-                </div>
-                <div class="articleTitre">
-                    <h2>Titre</h2>
-                </div>
-            </div>
-            <hr>
-            <div class="articleContent">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore maiores nam ad reiciendis vitae corporis provident libero exercitationem sequi, inventore nobis nostrum voluptatum optio vero alias rem dolores necessitatibus eligendi voluptatem quod odio quisquam? Voluptates corrupti enim, cupiditate laudantium officiis, voluptate ratione necessitatibus laboriosam quaerat sequi numquam reprehenderit quod vel! Eaque magnam qui dolorem voluptatibus est tempora voluptas et amet autem, animi quis facilis fugit exercitationem iure, omnis rerum hic nostrum natus laborum corporis eligendi. Quam quia sint nesciunt iusto repudiandae inventore animi aliquam ex eum obcaecati, delectus minus ducimus est perferendis atque nisi accusamus, repellat hic quas? Deserunt, provident!</p>
-                <a class="comments" href="#"><p><i class="fas fa-comment-dots"></i>Commentaires</p></a>
-            </div>
-        </div>
+        <?php
+            $req = $db->query("SELECT id, titre, auteur, contenu, DATE_FORMAT(date_creation, 'Le %d/%m/%Y') AS date_creation_fr FROM articles ORDER BY date_creation DESC LIMIT 0,5");
+
+            while ($donnees = $req->fetch()) {
+                ?>
+
+                    <div class="article">
+                        <div class="articleHeader">
+                            <div class="articleInfos">
+                                <p><i class="fas fa-user"></i><?= $donnees['auteur'] ?></p>
+                                <p><i class="far fa-clock"></i><?= $donnees['date_creation_fr'] ?></p>
+                            </div>
+                            <div class="articleTitre">
+                                <h2><?= $donnees['titre'] ?></h2>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="articleContent">
+                            <p><?= $donnees['contenu'] ?></p>
+                            <a class="comments" href="#"><p><i class="fas fa-comment-dots"></i>Lire</p></a>
+                        </div>
+                        
+                    </div>
+
+                <?php
+            }
+        ?>
 
     </main>
     

@@ -89,6 +89,7 @@ main {
     align-items: center;
 
     /* border: 1px solid #000; */
+    /* background-color: #ccc; */
 }
 
 .article>hr {
