@@ -1,0 +1,14 @@
+footer {
+    grid-column: 1 / span 6;
+    grid-row: 3 / span 1;
+
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+    background-color: var(--blue);
+    color: #fff;
+}

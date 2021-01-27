@@ -1,10 +1,21 @@
 <?php
 
+// Connexion à la base de données
 try {
-    $db = new PDO("mysql:host=localhost;dbname=blog", "root", "");
+    $db = new PDO("mysql:host=localhost;dbname=blog;charset=utf8", "root", "");
 } catch (PDOException $erreur) {
     echo "Problème à la connexion : " . $erreur->getMessage();
 }
+
+// Requête SQL pour afficher les 5 derniers articles
+$req = $db->query(
+    "SELECT a.id AS id_article, a.titre AS titre_article, a.auteur AS auteur_article, DATE_FORMAT(a.date_creation, 'Le %d/%m/%Y à %Hh%i') AS date_creation_fr, a.categorie AS categorie_article, c.id AS id_categorie 
+    FROM articles AS a
+    LEFT JOIN categories AS c
+    ON c.id = a.categorie
+    ORDER BY date_creation 
+    DESC LIMIT 0,5"
+    );
 
 ?>
 
@@ -37,38 +48,66 @@ try {
 
 <body>
 
-    <main>
-        <h1>Liste des articles</h1>
+    <main id="main_accueil">
 
-        <?php
-            $req = $db->query("SELECT id, titre, auteur, contenu, DATE_FORMAT(date_creation, 'Le %d/%m/%Y') AS date_creation_fr FROM articles ORDER BY date_creation DESC LIMIT 0,5");
+        <header>
+            <a href="index.php" class="titreSite">Deskad</a>
+            <nav>
+                <a href="index.php">Accueil</a>
+                <a href="#">Articles</a>
+                <a href="#">Inscription / Connexion</a>
+            </nav>
+        </header>
 
-            while ($donnees = $req->fetch()) {
-                ?>
+        <section id="banniere">
+            <h1>Deskad</h1>
+            <p>Bienvenue sur mon blog, inconnu !</p>
+            <div class="boutons">
+                <a href="#">Inscription / Connexion</a>
+            </div>
+        </section>
 
-                    <div class="article">
-                        <div class="articleHeader">
-                            <div class="articleInfos">
-                                <p><i class="fas fa-user"></i><?= $donnees['auteur'] ?></p>
-                                <p><i class="far fa-clock"></i><?= $donnees['date_creation_fr'] ?></p>
-                            </div>
-                            <div class="articleTitre">
-                                <h2><?= $donnees['titre'] ?></h2>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="articleContent">
-                            <p><?= $donnees['contenu'] ?></p>
-                            <a class="comments" href="#"><p><i class="fas fa-comment-dots"></i>Lire</p></a>
-                        </div>
-                        
-                    </div>
+        <section id="articles">
+
+            <div class="containerArticles">
+
+                <div class="article">
+                    <h2>Derniers articles</h2>
+                    <span id="iconeDroite">👉</span>
+                </div>
 
                 <?php
-            }
-        ?>
+                    // Parcours des données de la requête
+                    while ($donnees = $req->fetch()) {
+                ?>
+
+                <a href="afficherArticle.php?id=<?= $donnees['id_article'] ?>"><div class="article">
+                    <div class="titreArticle" style="
+                    background: linear-gradient(45deg, rgba(0, 0, 0, 0.3)50%, rgba(0, 0, 0, 0.3)50%), url(images/<?= $donnees['id_categorie'] ?>.jpg);
+                    background-size: cover;
+                    background-position: center;">
+                        <h3><?= $donnees['titre_article'] ?></h3>
+                    </div>
+                    <div class="infosArticle">
+                        <small><i class="fas fa-user"></i><?= $donnees['auteur_article'] ?></small>
+                        <small><i class="fas fa-clock"></i><?= $donnees['date_creation_fr'] ?></small>
+                    </div>
+                </div></a>
+
+                <?php
+                    }
+                    $req->closeCursor();
+                ?>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>Footer</p>
+        </footer>
 
     </main>
+
     
 
     <!-- JAVASCRIPT -->
