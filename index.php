@@ -16,6 +16,7 @@ include 'header.php';
         <div class="boutons">
             <a href="#">Inscription / Connexion</a>
         </div>
+        <div id="testjs"></div>
     </section>
 
     <section id="articles">

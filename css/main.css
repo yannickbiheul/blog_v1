@@ -39,6 +39,8 @@ a {
 }
 
 #banniere {
+    position: relative;
+
     grid-column: 1 / span 6;
     grid-row: 1 / span 1;
 
@@ -52,6 +54,7 @@ a {
     background-position: center;
 
     padding-top: 60px;
+    overflow: hidden;
 }
 
 #banniere>h1 {
@@ -90,6 +93,17 @@ a {
     background-color: #fff;
     color: var(--blue);
     border: 1px solid var(--blue);
+}
+
+#testjs {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+
+    width: 60px;
+    height: 20px;
+
+    background-color: var(--red);
 }
 
 #articles {
