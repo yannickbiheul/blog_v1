@@ -4,5 +4,6 @@
         <a href="index.php">Accueil</a>
         <a href="articles.php">Articles</a>
         <a href="#">Inscription / Connexion</a>
+        <a href="admin/ajouter.php">Ajouter</a>
     </nav>
 </header>
