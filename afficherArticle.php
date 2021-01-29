@@ -2,6 +2,11 @@
 
 include 'connexionDB.php';
 include 'requeteArticle.php';
+while ($verif = $verifArticle->fetch()) {
+    if ($_GET['id'] > $verif[0]) {
+        header('Location: error.php');
+    } else {
+    
 include 'requeteCommentaires.php';
 include 'header.php';
 include 'nav.php';
@@ -77,6 +82,8 @@ include 'nav.php';
     <?php
     }
     $requeteCommentaires->closeCursor();
+}
+}
     ?>
 
     </div>

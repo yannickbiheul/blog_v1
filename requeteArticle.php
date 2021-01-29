@@ -8,4 +8,7 @@
     );
     $requeteArticle->execute(array($_GET['id']));
 
+    // Vérifier l'existence de l'article
+    $verifArticle = $db->query("SELECT MAX(id) from articles");
+
 ?>
