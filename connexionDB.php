@@ -2,7 +2,7 @@
 
     // Connexion à la base de données
     try {
-        $db = new PDO("mysql:host=localhost;dbname=blog;charset=utf8", "root", "");
+        $db = new PDO("mysql:host=localhost;dbname=blog;charset=utf8", "root", "root");
     } catch (PDOException $erreur) {
         echo "Problème à la connexion : " . $erreur->getMessage();
     }
