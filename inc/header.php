@@ -7,7 +7,7 @@
     <!-- DESCRIPTION -->
     <meta name='description' content='1ère version du blog'>
     <!-- CSS -->
-    <link rel='stylesheet' href='css/main.css'>
+    <link rel='stylesheet' href='assets/css/main.css'>
     <!-- GOOGLE FONTS -->
     <!-- Roboto -->
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>

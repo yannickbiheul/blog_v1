@@ -1,10 +1,10 @@
 <?php 
-include 'header.php';
+include 'inc/header.php';
 ?>
 
 <main id="main_accueil">
 
-    <?php include 'nav.php'; ?>
+    <?php include 'inc/nav.php'; ?>
 
     <section id="banniere">
         <h1>Deskad</h1>
@@ -26,19 +26,19 @@ include 'header.php';
 
             <?php
                 // Parcours des données de la requête
-                while ($donnees = $req->fetch()) {
+                while ($data = $req->fetch()) {
             ?>
 
-            <a href="afficherArticle.php?id=<?= $donnees['id_article'] ?>"><div class="article">
+            <a href="controllerArticle.php?id=<?= $data['id_article'] ?>"><div class="article">
                 <div class="titreArticle" style="
-                background: linear-gradient(45deg, rgba(0, 0, 0, 0.3)50%, rgba(0, 0, 0, 0.3)50%), url(images/<?= $donnees['id_categorie'] ?>.jpg);
+                background: linear-gradient(45deg, rgba(0, 0, 0, 0.3)50%, rgba(0, 0, 0, 0.3)50%), url(images/<?= $data['id_categorie'] ?>.jpg);
                 background-size: cover;
                 background-position: center;">
-                    <h3><?= $donnees['titre_article'] ?></h3>
+                    <h3><?= $data['titre_article'] ?></h3>
                 </div>
                 <div class="infosArticle">
-                    <small><i class="fas fa-user"></i><?= $donnees['auteur_article'] ?></small>
-                    <small><i class="fas fa-clock"></i><?= $donnees['date_creation_fr'] ?></small>
+                    <small><i class="fas fa-user"></i><?= $data['auteur_article'] ?></small>
+                    <small><i class="fas fa-clock"></i><?= $data['date_creation_fr'] ?></small>
                 </div>
             </div></a>
 
@@ -50,4 +50,4 @@ include 'header.php';
         </div>
         </section>
 
-<?php include 'footer.php' ?>
+<?php include 'inc/footer.php' ?>

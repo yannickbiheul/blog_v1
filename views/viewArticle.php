@@ -1,15 +1,8 @@
 <?php
 
-include 'connexionDB.php';
-include 'requeteArticle.php';
-while ($verif = $verifArticle->fetch()) {
-    if ($_GET['id'] > $verif[0]) {
-        header('Location: error.php');
-    } else {
-    
-include 'requeteCommentaires.php';
-include 'header.php';
-include 'nav.php';
+include 'inc/header.php';
+// include 'inc/nav.php';
+// var_dump($post);
 
 ?>
 
@@ -17,37 +10,25 @@ include 'nav.php';
 
     <main id="afficherArticle">
 
-    <?php
-
-    while ($donnees = $requeteArticle->fetch()) {
-
-    ?>
-
     <div class="unArticle">
 
         <div class="articleHeader">
         
             <div class="articleTitre">
-                <h2><?= $donnees['titre_article'] ?></h2>
+                <h2><?= $post['titre_article'] ?></h2>
             </div>
             <div class="articleInfos">
-                <small><i class="fas fa-user"></i><?= $donnees['auteur_article'] ?></small>
+                <small><i class="fas fa-user"></i><?= $post['auteur_article'] ?></small>
                 <br>
-                <small><i class="far fa-clock"></i><?= $donnees['date_creation_fr'] ?></small>
+                <small><i class="far fa-clock"></i><?= $post['date_creation_fr'] ?></small>
             </div>
         </div>
         <hr>
         <div class="articleContent">
-            <p><?= nl2br($donnees['article_contenu']) ?></p>
+            <p><?= nl2br($post['article_contenu']) ?></p>
         </div>
                         
     </div>
-
-    <?php
-        
-    }
-    $requeteArticle->closeCursor();
-    ?>
 
     <!-- AJOUTER COMMENTAIRE -->
  
@@ -82,8 +63,8 @@ include 'nav.php';
     <?php
     }
     $requeteCommentaires->closeCursor();
-}
-}
+
+
     ?>
 
     </div>

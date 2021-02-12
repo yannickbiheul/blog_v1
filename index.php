@@ -1,9 +1,10 @@
 <?php
 
-include 'connexionDB.php';
-include 'requeteDerniersArticles.php';
+require('models/model.php');
 
-require('affichageAccueil.php');
+$req = getLastArticles();
 
-?>
+require('views/viewAccueil.php');
+
+
 
