@@ -2,7 +2,7 @@
 
     if (isset($_POST['login']) && isset($_POST['pass'])) {
         $login = $_POST['login'];
-        $pass_crypte = crypt($_POST['pass'], CRYPT_EXT_DES);
+        $pass_crypte = crypt($_POST['pass']);
 
         echo '<p>La ligne à copier dans le .htpasswd :<br>' . $login . ':' . $pass_crypte . '</p>';
     }

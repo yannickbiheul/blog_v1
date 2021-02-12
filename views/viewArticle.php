@@ -1,10 +1,6 @@
-<?php
+<?php $title = htmlspecialchars($article['titre_article']); ?>
 
-include 'inc/header.php';
-// include 'inc/nav.php';
-// var_dump($post);
-
-?>
+<?php ob_start(); ?>
 
     <!-- AFFICHER ARTICLE -->
 
@@ -15,17 +11,17 @@ include 'inc/header.php';
         <div class="articleHeader">
         
             <div class="articleTitre">
-                <h2><?= $post['titre_article'] ?></h2>
+                <h2><?= $article['titre_article'] ?></h2>
             </div>
             <div class="articleInfos">
-                <small><i class="fas fa-user"></i><?= $post['auteur_article'] ?></small>
+                <small><i class="fas fa-user"></i><?= $article['auteur_article'] ?></small>
                 <br>
-                <small><i class="far fa-clock"></i><?= $post['date_creation_fr'] ?></small>
+                <small><i class="far fa-clock"></i><?= $article['date_creation_fr'] ?></small>
             </div>
         </div>
         <hr>
         <div class="articleContent">
-            <p><?= nl2br($post['article_contenu']) ?></p>
+            <p><?= nl2br($article['article_contenu']) ?></p>
         </div>
                         
     </div>
@@ -46,27 +42,27 @@ include 'inc/header.php';
     <div class="commentaires">
     <?php
 
-    while ($donnees = $requeteCommentaires->fetch()) {
+    while ($comment = $comments->fetch()) {
 
     ?>
        
-        <div class="carteCommentaire">
-            <h4><?= $donnees['auteur'] ?></h4>
-            <small><i class="fas fa-clock"></i><?= $donnees['date_commentaire_fr'] ?></small>
-            <div class="commentaire">
-                <p><?= nl2br($donnees['commentaire']) ?></p>
-            </div>
-            <hr>
+    <div class="carteCommentaire">
+        <h4><?= $comment['auteur'] ?></h4>
+        <small><i class="fas fa-clock"></i><?= $comment['date_commentaire_fr'] ?></small>
+        <div class="commentaire">
+            <p><?= nl2br($comment['commentaire']) ?></p>
         </div>
+        <hr>
+    </div>
         
 
     <?php
     }
-    $requeteCommentaires->closeCursor();
-
 
     ?>
 
     </div>
+
+<?php $content = ob_get_clean(); ?>
     
-<?php include 'footer.php' ?>
+<?php require('template.php');

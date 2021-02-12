@@ -1,10 +1,8 @@
-<?php 
-include 'inc/header.php';
-?>
+<?php $title = "Deskad | Accueil" ?>
+
+<?php ob_start(); ?>
 
 <main id="main_accueil">
-
-    <?php include 'inc/nav.php'; ?>
 
     <section id="banniere">
         <h1>Deskad</h1>
@@ -26,10 +24,10 @@ include 'inc/header.php';
 
             <?php
                 // Parcours des données de la requête
-                while ($data = $req->fetch()) {
+                while ($data = $articles->fetch()) {
             ?>
 
-            <a href="controllerArticle.php?id=<?= $data['id_article'] ?>"><div class="article">
+            <a href="index.php?action=article&amp;id=<?= $data['id_article'] ?>"><div class="article">
                 <div class="titreArticle" style="
                 background: linear-gradient(45deg, rgba(0, 0, 0, 0.3)50%, rgba(0, 0, 0, 0.3)50%), url(images/<?= $data['id_categorie'] ?>.jpg);
                 background-size: cover;
@@ -44,10 +42,12 @@ include 'inc/header.php';
 
             <?php
                 }
-                $req->closeCursor();
+                $articles->closeCursor();
             ?>
 
         </div>
         </section>
 
-<?php include 'inc/footer.php' ?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php');

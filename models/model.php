@@ -11,8 +11,6 @@ function dbConnect() {
 }
 
 
-
-
 // Récupération des 5 derniers articles
 function getLastArticles() {
     $db = dbConnect();
@@ -29,8 +27,6 @@ function getLastArticles() {
 }
 
 
-
-
 // Récupération d'un article
 function getArticle($postId) {
     $db = dbConnect();
@@ -44,8 +40,6 @@ function getArticle($postId) {
 
     return $post;
 }
-
-
 
 
 // Récupération des commentaires
