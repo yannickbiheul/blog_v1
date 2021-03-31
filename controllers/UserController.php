@@ -155,6 +155,29 @@ class UserController {
             }
     }
 
+    public function formSignin() {
+        require('views/viewFormSignin.php');
+    }
+
+    public function signin() {
+        $this->_userDatas = $_POST;
+
+        if (isset($this->_userDatas['email']) && isset($this->_userDatas['password'])) {
+            $mail = $this->_userService->isMailExists($this->_userDatas['email']);
+
+            if ($mail) {
+                if ($mail['email'] == $this->_userDatas['email']) {
+                    array_push($this->_errors, "Email déjà enregistré");
+                } 
+            }
+
+        } else {
+            $this->_fields = 'Veuillez remplir tous les champs';
+            $fields = $this->_fields;
+            require('views/viewFormSignin.php');
+        }
+    }
+
     public function endSession() {
         session_destroy();
         header('Location: index.php?action=home');

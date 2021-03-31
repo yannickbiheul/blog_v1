@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$title = 'Modification compte';
+$title = 'Deskad | Modifier son compte';
 ?>
 
 <section id="connect" class="container">

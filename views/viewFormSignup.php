@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$title = 'Inscription';
+$title = 'Deskad | Inscription';
 ?>
 
 <section id="connect" class="container">

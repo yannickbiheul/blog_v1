@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$title = 'Page Membre';
+$title = "Deskad | " . $_SESSION['pseudo'];
 
 ?>
     

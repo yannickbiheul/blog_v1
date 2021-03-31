@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$title = 'Accueil';
+$title = 'Deskad | Accueil';
 ?>
 
 <section id="accueil">
@@ -9,7 +9,7 @@ $title = 'Accueil';
 
         <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  Quoi d'neuf ?
 </button>
 
 <!-- Modal -->
