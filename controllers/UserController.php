@@ -33,30 +33,43 @@ class UserController {
             && isset($this->_userDatas['password']) && !empty($this->_userDatas['password'])
             && isset($this->_userDatas['cpassword']) && !empty($this->_userDatas['cpassword'])) {
 
+                // Vérification Prénom
                 if ((preg_match('#[0-9]#', $this->_userDatas['firstname'])) || strlen($this->_userDatas['firstname']) < 3) {
                     array_push($this->_errors, "Prénom incorrect");
                 }
 
+                // Vérification Nom
                 if ((preg_match('#[0-9]#', $this->_userDatas['lastname'])) || strlen($this->_userDatas['lastname']) < 3) {
                     array_push($this->_errors, "Nom incorrect");
                 }
 
+                // Vérification Pseudo
                 if (strlen($this->_userDatas['pseudo']) < 3) {
                     array_push($this->_errors, "Pseudo incorrect");
                 }
 
+                $isPseudo = $this->_userService->isPseudoExists($this->_userDatas['pseudo']);
+
+                if ($isPseudo) {
+                    if ($isPseudo['pseudo'] == $this->_userDatas['pseudo']) {
+                        array_push($this->_errors, "Pseudo déjà pris");
+                    } 
+                }
+
+                // Vérification Email
                 if (!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $this->_userDatas['email'])) {
                     array_push($this->_errors, "Email incorrect");
                 }
 
-                $result = $this->_userService->isMailExists($this->_userDatas['email']);
+                $mail = $this->_userService->isMailExists($this->_userDatas['email']);
 
-                if ($result) {
-                    if ($result['email'] == $this->_userDatas['email']) {
+                if ($mail) {
+                    if ($mail['email'] == $this->_userDatas['email']) {
                         array_push($this->_errors, "Email déjà enregistré");
                     } 
                 }
 
+                // Vérification Mots de passe
                 if ($this->_userDatas['password'] != $this->_userDatas['cpassword']) {
                     array_push($this->_errors, "Les mots de passe ne concordent pas");
                 }

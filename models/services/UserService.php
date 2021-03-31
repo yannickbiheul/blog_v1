@@ -16,6 +16,11 @@ class UserService {
         return $result;
     }
 
+    public function isPseudoExists($pseudo) {
+        $isPseudo = $this->_userDao->checkPseudo($pseudo);
+        return $isPseudo;
+    }
+
     public function saveUser($userDatas) {
         $userDatas['firstname'] = htmlspecialchars($userDatas['firstname']);
         $userDatas['lastname'] = htmlspecialchars($userDatas['lastname']);

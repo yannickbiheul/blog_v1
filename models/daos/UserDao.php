@@ -15,6 +15,16 @@ class UserDao extends BaseDao {
         return $result;
     }
 
+    public function checkPseudo($pseudo) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
+        $res = $req->execute([
+            ':pseudo' => $pseudo
+        ]);
+        $result = $req->fetch();
+        return $result;
+    }
+
     public function createObjectUser($userDatas): User {
         $today = date("Y-m-d");
         $user = new User;
