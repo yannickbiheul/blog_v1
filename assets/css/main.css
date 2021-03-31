@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.banniere {
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(../images/fond-route.jpg);
+    background-size: cover;
+    background-position: center;
+
+    color: #fff;
+}
+
+.inscription {
+    /* border: 1px solid #ccc; */
+    padding: 80px 20px;
+}
+
+.connexion {
+    /* border: 1px solid #ccc; */
+    padding: 80px 20px;
+}
+
+.form-text {
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+#member-page {
+    padding-top: 40px;
+    /* border: 1px solid #ccc; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,4 +1,0 @@
-AuthName "Entrez votre login et mot de passe"
-AuthType Basic
-AuthUserFile "C:\xampp\htdocs\blog_v1\admin\.htpasswd"
-Require valid-user
