@@ -57,6 +57,7 @@ $title = 'Inscription';
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
+                <a type="button" href="index.php?action=home" class="btn btn-danger">Annuler</a>
             </form>
 
         </div>

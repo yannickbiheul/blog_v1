@@ -27,4 +27,16 @@ class UserService {
         $this->_userDao->saveMemberinDb($this->_user);
         return $this->_user;
     }
+
+    public function setUser($newDatas) {
+        $newDatas['firstname'] = htmlspecialchars($newDatas['firstname']);
+        $newDatas['lastname'] = htmlspecialchars($newDatas['lastname']);
+        $newDatas['pseudo'] = htmlspecialchars($newDatas['pseudo']);
+        $newDatas['email'] = htmlspecialchars($newDatas['email']);
+        $newDatas['password'] = password_hash($newDatas['password'], PASSWORD_BCRYPT);
+
+        $this->_user = $this->_userDao->createObjectUser($newDatas);
+        $this->_userDao->updateMemberinDb($this->_user);
+        return $this->_user;
+    }
 }

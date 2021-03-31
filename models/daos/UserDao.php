@@ -45,4 +45,16 @@ class UserDao extends BaseDao {
         ]);
     }
 
+    public function updateMemberinDb(USER $user) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE users SET firstname = :firstname, lastname = :lastname, pseudo = :pseudo, email = :email, password = :password WHERE email = :email");
+        $res = $req->execute([
+            ':firstname' => $user->getFirstname(),
+            ':lastname' => $user->getLastname(),
+            ':pseudo' => $user->getPseudo(),
+            ':email' => $user->getEmail(),
+            ':password' => $user->getPassword()
+        ]);
+    }
+
 }
