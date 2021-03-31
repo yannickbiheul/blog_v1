@@ -33,11 +33,11 @@ class UserController {
             && isset($this->_userDatas['password']) && !empty($this->_userDatas['password'])
             && isset($this->_userDatas['cpassword']) && !empty($this->_userDatas['cpassword'])) {
 
-                if ((preg_match('#[0-9]#', $this->_userDatas['firstname'])) || $this->_userDatas['firstname'] < 3) {
+                if ((preg_match('#[0-9]#', $this->_userDatas['firstname'])) || strlen($this->_userDatas['firstname']) < 3) {
                     array_push($this->_errors, "Prénom incorrect");
                 }
 
-                if ((preg_match('#[0-9]#', $this->_userDatas['lastname'])) || $this->_userDatas['lastname'] < 3) {
+                if ((preg_match('#[0-9]#', $this->_userDatas['lastname'])) || strlen($this->_userDatas['lastname']) < 3) {
                     array_push($this->_errors, "Nom incorrect");
                 }
 
@@ -96,11 +96,11 @@ class UserController {
             && isset($this->_userDatas['password']) && !empty($this->_userDatas['password'])
             && isset($this->_userDatas['cpassword']) && !empty($this->_userDatas['cpassword'])) {
 
-                if ((preg_match('#[0-9]#', $this->_userDatas['firstname'])) || $this->_userDatas['firstname'] < 3) {
+                if ((preg_match('#[0-9]#', $this->_userDatas['firstname'])) || strlen($this->_userDatas['firstname']) < 3) {
                     array_push($this->_errors, "Prénom incorrect");
                 }
 
-                if ((preg_match('#[0-9]#', $this->_userDatas['lastname'])) || $this->_userDatas['lastname'] < 3) {
+                if ((preg_match('#[0-9]#', $this->_userDatas['lastname'])) || strlen($this->_userDatas['lastname']) < 3) {
                     array_push($this->_errors, "Nom incorrect");
                 }
 
