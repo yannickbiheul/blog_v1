@@ -162,19 +162,68 @@ class UserController {
     public function signin() {
         $this->_userDatas = $_POST;
 
-        if (isset($this->_userDatas['email']) && isset($this->_userDatas['password'])) {
-            $mail = $this->_userService->isMailExists($this->_userDatas['email']);
+        if (isset($this->_userDatas['email']) && !empty($this->_userDatas['email'])
+            && isset($this->_userDatas['password']) && !empty($this->_userDatas['password'])) {
 
-            if ($mail) {
-                if ($mail['email'] == $this->_userDatas['email']) {
-                    array_push($this->_errors, "Email déjà enregistré");
-                } 
+            $datas = $this->_userService->isMailExists($this->_userDatas['email']);
+
+            if ($datas) {
+                if (password_verify($this->_userDatas['password'], $datas['password'])) {
+                    $this->_userService->connectUser($datas);
+                } else {
+                    array_push($this->_errors, 'Le mot de passe ne correspond pas');
+                }
+            } else {
+                array_push($this->_errors, "Cet email n'existe pas");
+            }
+
+            if (empty($this->_errors)) {
+                require('views/viewMemberPage.php');
+            } else {
+                $fails = $this->_errors;
+                require('views/viewFormSignin.php');
             }
 
         } else {
             $this->_fields = 'Veuillez remplir tous les champs';
             $fields = $this->_fields;
             require('views/viewFormSignin.php');
+        }
+    }
+
+    public function formContact() {
+        require('views/viewFormContact.php');
+    }
+
+    public function contact() {
+        $this->_messageDatas = $_POST;
+
+        if (isset($this->_messageDatas['firstname']) && !empty($this->_messageDatas['firstname'])
+            && isset($this->_messageDatas['lastname']) && !empty($this->_messageDatas['lastname'])
+            && isset($this->_messageDatas['email']) && !empty($this->_messageDatas['email'])
+            && isset($this->_messageDatas['cemail']) && !empty($this->_messageDatas['cemail'])
+            && isset($this->_messageDatas['message']) && !empty($this->_messageDatas['message'])) {
+
+            if ((preg_match('#[0-9]#', $this->_messageDatas['firstname'])) || strlen($this->_messageDatas['firstname']) < 3) {
+                array_push($this->_errors, "Prénom incorrect");
+            }
+
+            if ((preg_match('#[0-9]#', $this->_messageDatas['lastname'])) || strlen($this->_messageDatas['lastname']) < 3) {
+                array_push($this->_errors, "Nom incorrect");
+            }
+
+            if (!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $this->_messageDatas['email'])) {
+                array_push($this->_errors, "Email incorrect");
+                }
+
+            if ($this->_messageDatas['email'] != $this->_messageDatas['cemail']) {
+                array_push($this->_errors, "Les emails ne concordent pas");
+            }
+
+        } else {
+            $this->_fields = 'Veuillez remplir tous les champs';
+            $fields = $this->_fields;
+            require('views/viewFormContact.php');
         }
     }
 

@@ -5,7 +5,7 @@ $title = 'Deskad | Accueil';
 
 <section id="accueil">
     <div class="banniere container-fluid">
-        <h1>Accueil</h1>
+        <h1>Deskad</h1>
 
         <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -22,12 +22,11 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>le 1 avril 2021</p>
+        <li>Possibilité de se connecter</li>
+        <br>
         <p>Le 31 mars 2021</p>
-        <li>Les articles ne sont pas prêts.</li>
-        <li>La page à propos n'est pas prête.</li>
-        <li>La page contact n'est pas prête.</li>
-        <li>On peut s'inscrire et modifier nos données.</li>
-        <li>On ne peut pas encore se connecter.</li>
+        <li>Possibilité de s'inscrire et modifier ses données.</li>
       </ul>
       </div>
       <div class="modal-footer">

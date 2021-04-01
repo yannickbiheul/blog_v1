@@ -26,13 +26,13 @@ class UserDao extends BaseDao {
     }
 
     public function createObjectUser($userDatas): User {
-        $today = date("Y-m-d");
         $user = new User;
         $user->setFirstname($userDatas['firstname']);
         $user->setlastname($userDatas['lastname']);
         $user->setPseudo($userDatas['pseudo']);
         $user->setEmail($userDatas['email']);
         $user->setPassword($userDatas['password']);
+        $today = date("Y-m-d");
         $user->setSignupDate($today);
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
@@ -65,6 +65,22 @@ class UserDao extends BaseDao {
             ':email' => $user->getEmail(),
             ':password' => $user->getPassword()
         ]);
+    }
+
+    public function createObjectConnectUser($datas): User {
+        $user = new User;
+        $user->setFirstname($datas['firstname']);
+        $user->setlastname($datas['lastname']);
+        $user->setPseudo($datas['pseudo']);
+        $user->setEmail($datas['email']);
+        $user->setPassword($datas['password']);
+        $user->setSignupDate($datas['signup_date']);
+        $_SESSION['firstname'] = $user->getFirstname();
+        $_SESSION['lastname'] = $user->getLastname();
+        $_SESSION['pseudo'] = $user->getPseudo();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['signup_date'] = $user->getSignupDate();
+        return $user;
     }
 
 }

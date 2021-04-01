@@ -9,10 +9,12 @@ if (isset($_GET['action'])) {
 
     $action = $_GET['action'];
 
-    if ($_GET['action'] == $action) {
+    if (method_exists($userController, $action)) {
         $userController->$action();
+    } else {
+        $userController->home();
     }
-
+    
 } else {
 
     $userController->home();

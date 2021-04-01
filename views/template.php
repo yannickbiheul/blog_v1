@@ -40,7 +40,7 @@
                         <a class="nav-link" href="index.php?action=about">À propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=contact">Contact</a>
+                        <a class="nav-link" href="index.php?action=formContact">Contact</a>
                     </li>
                     <?php
                     if (!isset($_SESSION['pseudo'])) {
@@ -56,6 +56,15 @@
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=memberPage"><?= $_SESSION['pseudo'] ?></a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                    <?php
+                    if ($_SESSION['email'] == "yannickbiheul@outlook.fr") {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=formAddPost">Ajouter article</a>
                         </li>
                         <?php
                     }

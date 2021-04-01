@@ -44,4 +44,15 @@ class UserService {
         $this->_userDao->updateMemberinDb($this->_user);
         return $this->_user;
     }
+
+    public function connectUser($datas) {
+        $datas['firstname'] = htmlspecialchars($datas['firstname']);
+        $datas['lastname'] = htmlspecialchars($datas['lastname']);
+        $datas['pseudo'] = htmlspecialchars($datas['pseudo']);
+        $datas['email'] = htmlspecialchars($datas['email']);
+        $datas['password'] = password_hash($datas['password'], PASSWORD_BCRYPT);
+
+        $this->_user = $this->_userDao->createObjectConnectUser($datas);
+        return $this->_user;
+    }
 }
