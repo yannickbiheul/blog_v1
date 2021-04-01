@@ -220,6 +220,15 @@ class UserController {
                 array_push($this->_errors, "Les emails ne concordent pas");
             }
 
+            if (empty($this->_errors)) {
+                $this->_userService->sendMail($this->_messageDatas);
+                $successSend = 'Votre message à bien été envoyé, merci !';
+                require('views/viewFormContact.php');
+            } else {
+                $fails = $this->_errors;
+                require('views/viewFormContact.php');
+            }
+
         } else {
             $this->_fields = 'Veuillez remplir tous les champs';
             $fields = $this->_fields;

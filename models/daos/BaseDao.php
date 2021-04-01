@@ -7,6 +7,11 @@ class BaseDao {
     protected $_user = "root";
     protected $_password = "";
 
+    // protected $_host = "db5001296326.hosting-data.io";
+    // protected $_dbname = "dbs1105568";
+    // protected $_user = "dbu1510850";
+    // protected $_password = "#1262QEiZMxeaoX@";
+
     public function dbConnect() {
         try {
             $db = new PDO("mysql:host=$this->_host; dbname=$this->_dbname", $this->_user, $this->_password);

@@ -28,7 +28,7 @@ $title = 'Deskad | Connexion';
                     </div>
                     <div class="col-md">
                         <label for="password" class="form-label">Mot de passe</label>
-                        <input type="text" class="form-control" id="password" aria-describedby="passwordHelp" name="password">
+                        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" name="password">
                         <div id="passwordHelp" class="form-text"></div>
                     </div>
                 </div>

@@ -9,11 +9,11 @@ class User {
     private $_password;
     private $_signup_date;
 
-    public function getFirstname() {
+    public function getFirstname() : String {
         return $this->_firstname;
     }
 
-    public function setFirstname($firstname) {
+    public function setFirstname($firstname) : User {
         $this->_firstname = $firstname;
         return $this;
     }

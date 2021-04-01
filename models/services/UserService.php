@@ -55,4 +55,18 @@ class UserService {
         $this->_user = $this->_userDao->createObjectConnectUser($datas);
         return $this->_user;
     }
+
+    public function sendMail($messageDatas) {
+        $to = "yannickbiheul@outlook.fr";
+        $subject = "Message du site Deskad";
+        $name = $messageDatas['firstname'] . $messageDatas['lastname'];
+        $email = $messageDatas['email'];
+        $message = $messageDatas['message'];
+        $headers = array(
+            'From' => $name,
+            'Reply-To' => $email,
+            'X-Mailer' => 'PHP/' . phpversion()
+        );
+        mail($to, $subject, $message, $headers);
+    }
 }

@@ -16,6 +16,9 @@ $title = 'Deskad | Contact';
         if (isset($fields)) {
             echo "<p style='color:red'>$fields</p>";
         }
+        if (isset($successSend)) {
+            echo "<p style='color:green'>$successSend</p>";
+        }
         ?>
             
             <form method="POST" action="index.php?action=contact">
@@ -74,7 +77,7 @@ $title = 'Deskad | Contact';
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Votre message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="message"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 <a type="button" href="index.php?action=home" class="btn btn-danger">Annuler</a>
