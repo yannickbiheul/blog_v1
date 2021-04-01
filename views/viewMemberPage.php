@@ -19,8 +19,8 @@ $title = "Deskad | " . $_SESSION['pseudo'];
                 <li class="card-text">Mot de passe : ******</li>
                 <li class="card-text">Inscrit le : <?= $_SESSION['signup_date'] ?></li>
             </ul>
-            <a href="index.php?action=endSession" class="btn btn-danger">Se déconnecter</a>
             <a href="index.php?action=formSetUser" class="btn btn-primary">Modifier</a>
+            <a href="index.php?action=endSession" class="btn btn-danger">Se déconnecter</a>
         </div>
 </div>
     </div>

@@ -24,6 +24,8 @@ $title = 'Deskad | Accueil';
       <ul>
         <p>le 1 avril 2021</p>
         <li>Possibilité de se connecter</li>
+        <li>Formulaire de contact fonctionnel</li>
+        <li>Enregistrement article dans base de données (admin)</li>
         <br>
         <p>Le 31 mars 2021</p>
         <li>Possibilité de s'inscrire et modifier ses données.</li>
