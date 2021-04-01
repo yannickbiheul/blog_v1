@@ -3,7 +3,9 @@
 session_start();
 
 require('controllers/UserController.php');
+require('controllers/PostController.php');
 $userController = new UserController;
+$postController = new PostController;
 
 if (isset($_GET['action'])) {
 
@@ -12,7 +14,11 @@ if (isset($_GET['action'])) {
     if (method_exists($userController, $action)) {
         $userController->$action();
     } else {
-        $userController->home();
+        if (method_exists($postController, $action)) {
+            $postController->$action();
+        } else {
+            $userController->home();
+        }
     }
     
 } else {

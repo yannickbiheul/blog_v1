@@ -57,13 +57,18 @@ class UserService {
     }
 
     public function sendMail($messageDatas) {
-        $to = "yannickbiheul@outlook.fr";
-        $subject = "Message du site Deskad";
-        $name = $messageDatas['firstname'] . $messageDatas['lastname'];
+        $messageDatas['firstname'] = htmlspecialchars($messageDatas['firstname']);
+        $messageDatas['lastname'] = htmlspecialchars($messageDatas['lastname']);
+        $messageDatas['email'] = htmlspecialchars($messageDatas['email']);
+        $messageDatas['message'] = htmlspecialchars($messageDatas['message']);
+
+        $to = "yannickbiheul@gmail.com";
+        $name = $messageDatas['firstname'] . " " . $messageDatas['lastname'];
+        $subject = "Deskad | Message de " . $name . " !";
         $email = $messageDatas['email'];
         $message = $messageDatas['message'];
         $headers = array(
-            'From' => $name,
+            'From' => 'yannickbiheul@outlook.fr',
             'Reply-To' => $email,
             'X-Mailer' => 'PHP/' . phpversion()
         );

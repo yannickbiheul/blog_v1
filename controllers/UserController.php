@@ -9,6 +9,7 @@ class UserController {
     private $_userService;
     private $_fields;
     private $_user;
+    private $_messageDatas;
 
     public function __construct() {
         $this->_userService = new UserService;
