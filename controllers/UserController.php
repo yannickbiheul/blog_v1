@@ -214,7 +214,7 @@ class UserController {
 
             if (!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $this->_messageDatas['email'])) {
                 array_push($this->_errors, "Email incorrect");
-                }
+            }
 
             if ($this->_messageDatas['email'] != $this->_messageDatas['cemail']) {
                 array_push($this->_errors, "Les emails ne concordent pas");
