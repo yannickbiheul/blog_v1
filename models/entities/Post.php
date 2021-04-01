@@ -51,7 +51,7 @@ class Post {
     }
 
     public function setCreationDate($date) {
-        $this->_creationDate = date('d-m-Y', strtotime($date));
+        $this->_creationDate = $date;
         return $this;
     }
 

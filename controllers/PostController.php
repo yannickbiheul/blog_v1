@@ -1,15 +1,15 @@
 <?php
 
-require 'models/daos/PostDao.php';
+require 'models/services/PostService.php';
 
 class PostController {
 
     private $_postDatas;
     private $_errors = array();
-    private $_postDao;
+    private $_postService;
 
     public function __construct() {
-        $this->_postDao = new PostDao;
+        $this->_postService = new PostService;
     }
 
     public function formAddPost() {
@@ -23,7 +23,9 @@ class PostController {
             && isset($this->_postDatas['resume']) && isset($this->_postDatas['image'])
             && isset($this->_postDatas['content'])) {
             
-            $this->postService->sendPost($this->_postDatas);
+            $this->_postService->sendPost($this->_postDatas);
+            $successSend = 'Article enregistré !';
+            require('views/viewFormAddPost.php');
 
         } else {
             array_push($this->_errors, 'Tous les champs sont requis');
