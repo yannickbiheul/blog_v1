@@ -24,7 +24,7 @@ class PostDao extends BaseDao {
     public function createPostObject($postDatas) {
         $this->_post->setTitle($postDatas['title']);
         $this->_post->setResume($postDatas['resume']);
-        $this->_post->setImage($postDatas['image']);
+        $this->_post->setImage($postDatas[0]);
         $this->_post->setContent($postDatas['content']);
         $today = date("Y-m-d");
         $this->_post->setCreationDate($today);

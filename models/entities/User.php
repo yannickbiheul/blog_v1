@@ -59,7 +59,7 @@ class User {
     }
 
     public function setSignupDate($signupDate) {
-        $this->_signup_date = date('d-m-Y', strtotime($signupDate));
+        $this->_signup_date = $signupDate;
         return $this;
     }
 }
