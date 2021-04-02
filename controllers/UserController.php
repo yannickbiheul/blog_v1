@@ -16,6 +16,7 @@ class UserController {
     }
 
     public function home() {
+
         require('views/viewHome.php');
     }
 
