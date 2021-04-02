@@ -46,4 +46,21 @@ class PostDao extends BaseDao {
             ':id_categories' => $post->getIdCategories()
         ]);
     }
+
+    public function getPosts() {
+        $db = $this->dbConnect();
+        $req = $db->query("SELECT * FROM posts ORDER BY id DESC");
+        $result = $req->fetchAll();
+        return $result;
+    }
+
+    public function getOnePost($idPost) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT * FROM posts WHERE id = :id");
+        $res = $req->execute([
+            ':id' => $idPost
+        ]);
+        $result = $req->fetch();
+        return $result;
+    }
 }

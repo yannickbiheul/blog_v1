@@ -20,7 +20,6 @@ class PostController {
         $this->_postDatas = $_POST;
         $image = $this->_postService->checkImage($_FILES);
         array_push($this->_postDatas, $image);
-        print_r($this->_postDatas);
 
         if (isset($this->_postDatas['id_categories']) && isset($this->_postDatas['title']) 
             && isset($this->_postDatas['resume']) && isset($this->_postDatas[0])
@@ -35,5 +34,15 @@ class PostController {
             $errors = $this->_errors;
             require('views/viewFormAddPost.php');
         }
+    }
+
+    public function posts() {
+        $posts = $this->_postService->askPosts();
+        require('views/viewPosts.php');
+    }
+
+    public function post($idPost) {
+        $post = $this->_postService->askOnePost($idPost);
+        require('views/viewPost.php');
     }
 }
