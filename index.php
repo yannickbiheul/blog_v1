@@ -10,17 +10,18 @@ $postController = new PostController;
 if (isset($_GET['action']) && isset($_GET['params'])) {
 
     $action = $_GET['action'];
+    $params = $_GET['params'];
 
     if (method_exists($userController, $action)) {
-        $userController->$action($_GET['params']);
+        $userController->$action($params);
     } else {
         if (method_exists($postController, $action)) {
-            $postController->$action($_GET['params']);
+            $postController->$action($params);
         } else {
-            $userController->home();
+            $postController->home();
         }
     }
-} else if (isset($_GET['action'])) {
+} else if (isset($_GET['action']) && !isset($_GET['params'])) {
 
     $action = $_GET['action'];
 
@@ -30,13 +31,13 @@ if (isset($_GET['action']) && isset($_GET['params'])) {
         if (method_exists($postController, $action)) {
             $postController->$action();
         } else {
-            $userController->home();
+            $postController->home();
         }
     }
     
 } else {
 
-    $userController->home();
+    $postController->home();
 }
 
 

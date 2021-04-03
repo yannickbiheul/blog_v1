@@ -64,4 +64,11 @@ class PostService {
         return $post;
     }
 
+    public function clearDatasComment($commentDatas) {
+        $pseudo = htmlspecialchars($commentDatas['pseudo']);
+        $comment = htmlspecialchars($commentDatas['comment']);
+
+        $this->_postDao->saveComment();
+    }
+
 }

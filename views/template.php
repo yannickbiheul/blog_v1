@@ -25,7 +25,7 @@
 
 <body>
 
-    <nav class="navbar fixedt-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php?action=home">Deskad</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                     }
                     ?>
                     <?php
-                    if ($_SESSION['email'] == "yannickbiheul@outlook.fr") {
+                    if ($_SESSION['admin']) {
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=formAddPost">Ajouter article</a>

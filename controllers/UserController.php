@@ -15,11 +15,6 @@ class UserController {
         $this->_userService = new UserService;
     }
 
-    public function home() {
-
-        require('views/viewHome.php');
-    }
-
     public function formSignup() {
         require('views/viewFormSignup.php');
     }

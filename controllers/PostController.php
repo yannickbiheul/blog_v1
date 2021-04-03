@@ -12,6 +12,10 @@ class PostController {
         $this->_postService = new PostService;
     }
 
+    public function home() {
+        require('views/viewHome.php');
+    }
+
     public function formAddPost() {
         require('views/viewFormAddPost.php');
     }
@@ -44,5 +48,20 @@ class PostController {
     public function post($idPost) {
         $post = $this->_postService->askOnePost($idPost);
         require('views/viewPost.php');
+    }
+
+    public function getComment($params) {
+        $commentDatas = $_POST;
+        print_r($params);
+        $title = $this->_postService->getTitlePost($params);
+
+        if (isset($commentDatas['pseudo']) && !empty($commentDatas['pseudo'])
+            && isset($commentDatas['comment']) && !empty($commentDatas['comment'])) {
+            $this->_postService->clearDatasComment($commentDatas);
+
+        } else {
+            $fields = 'Tous les champs sont requis';
+            require('views/viewPost.php');
+        }
     }
 }
