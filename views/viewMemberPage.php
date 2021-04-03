@@ -6,7 +6,7 @@ $title = "Deskad | " . $_SESSION['pseudo'];
     
 
 <section id="member-page">
-    <div class="container container-member">
+    <div class="container container-member" style="padding-top:80px;">
         <div class="card" style="width: 20rem;">
         <img src="assets/images/user.png" class="card-img-top" alt="user">
         <div class="card-body">
