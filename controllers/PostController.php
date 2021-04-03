@@ -13,6 +13,7 @@ class PostController {
     }
 
     public function home() {
+        $lastPosts = $this->_postService->askLasPosts();
         require('views/viewHome.php');
     }
 

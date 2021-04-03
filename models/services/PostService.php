@@ -11,6 +11,11 @@ class PostService {
         $this->_postDao = new PostDao;
     }
 
+    public function askLasPosts() {
+        $lastPosts = $this->_postDao->getLastPosts();
+        return $lastPosts;
+    }
+
     public function sendPost($postDatas) {
         $this->_post = $this->_postDao->createPostObject($postDatas);
         $this->_postDao->savePostInDb($this->_post);

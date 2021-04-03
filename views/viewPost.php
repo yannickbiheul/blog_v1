@@ -9,7 +9,7 @@ $title = 'Deskad | ' . $post['title'];
     <h1 class="d-flex justify-content-center" style="margin-top:80px"><?= $post['title'] ?></h1>
     <br>
 
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" style="padding:10px;">
         <small class="text-muted"><?= $post['creation_date'] ?></small>
         <h5><?= $post['resume'] ?></h5>
         <img class="rounded float-start" style="width: 40%;min-width:260px;margin:40px;" src="assets/images/<?= $post['image'] ?>" alt="<?= $post['image'] ?>">

@@ -41,6 +41,24 @@ $title = 'Deskad | Accueil';
     </div>
   </div>
 </div>
+</div>
+
+<div id="lastPosts" class="container d-flex justify-content-center flex-wrap" style="padding: 20px;">
+<?php
+    foreach ($lastPosts as $lastPost) {
+        ?>
+            <div class="card" style="width: 20rem ; margin: 20px;color:#333;">
+                <img src="assets/images/<?= $lastPost['image'] ?>" class="card-img-top" alt="<?= $lastPost['image'] ?>">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $lastPost['title'] ?></h5>
+                    
+                    <a href="index.php?action=post&params=<?= $lastPost['id'] ?>" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        <?php
+    }
+    ?>
+</div>
 </section>
 
 <?php

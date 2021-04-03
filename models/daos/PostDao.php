@@ -11,6 +11,13 @@ class PostDao extends BaseDao {
         $this->_post = new Post;
     }
 
+    public function getLastPosts() {
+        $db = $this->dbConnect();
+        $req = $db->query("SELECT * FROM posts ORDER BY id DESC LIMIT 3");
+        $result = $req->fetchAll();
+        return $result;
+    }
+
     public function getIdUser($userMail) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT id from users WHERE email = :email");
