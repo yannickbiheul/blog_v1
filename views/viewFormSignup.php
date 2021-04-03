@@ -3,7 +3,7 @@ ob_start();
 $title = 'Deskad | Inscription';
 ?>
 
-<section id="connect" class="container">
+<section id="connect" class="container" style="padding-top:80px;">
     <div class="row">
         <div class="col-lg inscription">
 

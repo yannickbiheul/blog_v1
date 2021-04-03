@@ -3,7 +3,7 @@ ob_start();
 $title = 'Deskad | Ajouter Article';
 ?>
 
-<div class="container">
+<div class="container" style="padding-top:80px;">
     
     <br>
     <h1 class="d-flex justify-content-center">Ajouter Article</h1>
