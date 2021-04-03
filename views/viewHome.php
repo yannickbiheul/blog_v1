@@ -45,6 +45,7 @@ $title = 'Deskad | Accueil';
 
 <div id="lastPosts" class="container d-flex justify-content-center flex-wrap" style="padding: 20px;">
 <?php
+    if (isset($lastPosts)) {
     foreach ($lastPosts as $lastPost) {
         ?>
             <div class="card" style="width: 20rem ; margin: 20px;color:#333;">
@@ -56,7 +57,7 @@ $title = 'Deskad | Accueil';
                 </div>
             </div>
         <?php
-    }
+    }}
     ?>
 </div>
 </section>
