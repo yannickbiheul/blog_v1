@@ -51,10 +51,9 @@ class PostController {
         require('views/viewPost.php');
     }
 
-    public function getComment($params) {
+    public function checkComment($idPost) {
+        $post = $this->_postService->askOnePost($idPost);
         $commentDatas = $_POST;
-        print_r($params);
-        $title = $this->_postService->getTitlePost($params);
 
         if (isset($commentDatas['pseudo']) && !empty($commentDatas['pseudo'])
             && isset($commentDatas['comment']) && !empty($commentDatas['comment'])) {

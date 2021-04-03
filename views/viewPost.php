@@ -5,9 +5,21 @@ $title = 'Deskad | ' . $post['title'];
 
 <div class="container">
 
+
     <br>
+    
     <h1 class="d-flex justify-content-center" style="margin-top:80px"><?= $post['title'] ?></h1>
     <br>
+    <?php
+if (isset($fails)) {
+    foreach ($fails as $fail) {
+        echo "<p style='color:red'>$fail</p>";
+    }
+}
+if (isset($fields)) {
+    echo "<p style='color:red'>$fields</p>";
+}
+?>
 
     <div class="row d-flex justify-content-center" style="padding:10px;">
         <small class="text-muted"><?= $post['creation_date'] ?></small>
@@ -18,17 +30,8 @@ $title = 'Deskad | ' . $post['title'];
     </div>
 
     <div class="row" style="margin:40px;" id="formComment">
-    <?php
-    if (isset($fails)) {
-        foreach ($fails as $fail) {
-            echo "<p style='color:red'>$fail</p>";
-        }
-    }
-    if (isset($fields)) {
-        echo "<p style='color:red'>$fields</p>";
-    }
-    ?>
-        <form method="POST" action="index.php?action=getComment&params=<?= $post['id'] ?>">
+    
+        <form method="POST" action="index.php?action=checkComment&params=<?= $post['id'] ?>">
                 <h2>Commentaire</h2>
                 <div class="mb-3">
                     <label for="pseudo" class="form-label">Pseudo</label>
