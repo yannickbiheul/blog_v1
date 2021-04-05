@@ -35,22 +35,22 @@ class PostDao extends BaseDao {
         $this->_post->setContent($postDatas['content']);
         $today = date("Y-m-d");
         $this->_post->setCreationDate($today);
-        $this->_post->setIdUsers($this->getIdUser($_SESSION['email']));
-        $this->_post->setIdCategories($postDatas['id_categories']);
+        $this->_post->setIdUser($this->getIdUser($_SESSION['email']));
+        $this->_post->setIdCategory($postDatas['id_category']);
         return $this->_post;
     }
 
     public function savePostInDb(Post $post) {
         $db = $this->dbConnect();
-        $req = $db->prepare("INSERT INTO posts(id, title, resume, image, content, creation_date, id_users, id_categories) VALUES(NULL, :title, :resume, :image, :content, :creation_date, :id_users, :id_categories)");
+        $req = $db->prepare("INSERT INTO posts(id, title, resume, image, content, creation_date, id_user, id_category) VALUES(NULL, :title, :resume, :image, :content, :creation_date, :id_user, :id_category)");
         $res = $req->execute([
             ':title' => $post->getTitle(),
             ':resume' => $post->getResume(),
             ':image' => $post->getImage(),
             ':content' => $post->getContent(),
             ':creation_date' => $post->getCreationDate(),
-            ':id_users' => $post->getIdUsers(),
-            ':id_categories' => $post->getIdCategories()
+            ':id_users' => $post->getIdUser(),
+            ':id_categories' => $post->getIdCategory()
         ]);
     }
 

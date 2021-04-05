@@ -7,8 +7,8 @@ class Post {
     protected $_image;
     protected $_content;
     protected $_creationDate;
-    protected $_idUsers;
-    protected $_idCategories;
+    protected $_idUser;
+    protected $_idCategory;
 
     public function getTitle() {
         return $this->_title;
@@ -55,21 +55,21 @@ class Post {
         return $this;
     }
 
-    public function getIdUsers() {
+    public function getIdUser() {
         return $this->_idUsers;
     }
 
-    public function setIdUsers($idUsers) {
-        $this->_idUsers = $idUsers;
+    public function setIdUsers($idUser) {
+        $this->_idUser = $idUser;
         return $this;
     }
 
-    public function getIdCategories() {
-        return $this->_idCategories;
+    public function getIdCategory() {
+        return $this->_idCategory;
     }
 
-    public function setIdCategories($idCategories) {
-        $this->_idCategories = $idCategories;
+    public function setIdCategory($idCategory) {
+        $this->_idCategory = $idCategory;
         return $this;
     }
 }

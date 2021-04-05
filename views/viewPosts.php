@@ -15,6 +15,7 @@ $title = 'Deskad | Articles';
         ?>
             <div class="card" style="width: 20rem; margin: 20px">
                 <img src="assets/images/<?= $post['image'] ?>" class="card-img-top" alt="<?= $post['image'] ?>">
+                <span class="badge bg-secondary"><?= $post['id_category'] ?></span>
                 <div class="card-body">
                     <h5 class="card-title"><?= $post['title'] ?></h5>
                     <p class="card-text"><?= $post['resume'] ?></p>
