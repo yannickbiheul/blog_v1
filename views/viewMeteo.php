@@ -30,82 +30,75 @@ $title = 'Deskad | Météo';
         <div class="heure-bloc-prevision">
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
             <div class="bloc-h">
                 <p class="heure-nom-prevision"></p>
+                <img src="" alt="logo heure" class="logo-heure">
                 <p class="heure-prevision-valeur"></p>
-                <div class="bloc-icone">
-                    <img src="" alt="logo temps" class="heure-prevision-icone">
-                </div>
             </div>
         </div>
 
         <div class="jour-prevision-bloc">
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
             <div class="bloc-j">
                 <p class="jour-prevision-nom"></p>
+                <img src="" alt="logo jour" class="logo-jour">
                 <p class="jour-prevision-temp"></p>
             </div>
         </div>

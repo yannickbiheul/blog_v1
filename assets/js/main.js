@@ -7,7 +7,8 @@ const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
 const heure = document.querySelectorAll('.heure-nom-prevision');
 const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
-const iconePourH = document.querySelectorAll('.heure-prevision-icone');
+const imgHeure = document.querySelectorAll('.logo-heure');
+const imgJour = document.querySelectorAll('.logo-jour');
 const jourDiv = document.querySelectorAll('.jour-prevision-nom');
 const tempJourDiv = document.querySelectorAll('.jour-prevision-temp');
 const imgIcone = document.querySelector('.logo-meteo');
@@ -35,12 +36,21 @@ function AppelAPI(long, lat) {
     .then((data) => {
         resultatsAPI = data;
 
+        let heureActuelle = new Date().getHours();
+        let regexDay = /d/;
+        let regexNight = /n/;
+
         temps.innerText = resultatsAPI.current.weather[0].description;
         temperature.innerText = `${Math.trunc(resultatsAPI.current.temp)}°`;
+        // Icone dynamique
+        if (heureActuelle >= 6 && heureActuelle < 21) {
+            imgIcone.src = `assets/images/jour/${resultatsAPI.current.weather[0].icon}.svg`;
+        } else {
+            imgIcone.src = `assets/images/nuit/${resultatsAPI.current.weather[0].icon}.svg`;
+        }
         // localisation.innerText = resultatsAPI.timezone;
 
-        // Les heures, par tranche de trois, avec leur température.
-        let heureActuelle = new Date().getHours();
+        // Les heures, par tranche de trois.
         for (let i = 0; i < heure.length; i++) {
             let heureIncr = heureActuelle + i * 3;
             if (heureIncr > 24) {
@@ -53,15 +63,17 @@ function AppelAPI(long, lat) {
             
         }
 
-        // temp pour 3h
+        // Températures par 3h
         for (let j = 0; j < tempPourH.length; j++) {
             tempPourH[j].innerText = `${Math.trunc(resultatsAPI.hourly[j * 3].temp)}°`;
+        }
 
-            if (heureActuelle >= 6 && heureActuelle < 21) {
-                iconePourH.src = `assets/images/jour/${resultatsAPI.hourly[j * 3].weather[0].icon}.svg`;
-                console.log(iconePourH.src);
+        // Images par 3h
+        for (let h = 0; h < imgHeure.length; h++) {
+            if (resultatsAPI.hourly[h * 3].weather[0].icon.includes('d')) {
+                imgHeure[h].src = `assets/images/jour/${resultatsAPI.hourly[h * 3].weather[0].icon}.svg`;
             } else {
-                iconePourH.src = `assets/images/nuit/${resultatsAPI.hourly[j * 3].weather[0].icon}.svg`;
+                imgHeure[h].src = `assets/images/nuit/${resultatsAPI.hourly[h * 3].weather[0].icon}.svg`;
             }
         }
         
@@ -71,17 +83,18 @@ function AppelAPI(long, lat) {
             jourDiv[k].innerText = tabJoursEnOrdre[k].slice(0,3);
         }
 
-        // Temp par jour
+        // Températures et icones par jour
         for (let m = 0; m < 7; m++) {
             tempJourDiv[m].innerText = `${Math.trunc(resultatsAPI.daily[m + 1].temp.day)}°`;
         }
 
-        // Icone dynamique
-        if (heureActuelle >= 6 && heureActuelle < 21) {
-            imgIcone.src = `assets/images/jour/${resultatsAPI.current.weather[0].icon}.svg`;
-            console.log(imgIcone.src);
-        } else {
-            imgIcone.src = `assets/images/nuit/${resultatsAPI.current.weather[0].icon}.svg`;
+        // Images par jour
+        for (let d = 0; d < imgJour.length; d++) {
+            if (resultatsAPI.hourly[d * 3].weather[0].icon.includes('d')) {
+                imgJour[d].src = `assets/images/jour/${resultatsAPI.hourly[d * 3].weather[0].icon}.svg`;
+            } else {
+                imgJour[d].src = `assets/images/nuit/${resultatsAPI.hourly[d * 3].weather[0].icon}.svg`;
+            }
         }
 
         chargementContainer.classList.add('disparition');
