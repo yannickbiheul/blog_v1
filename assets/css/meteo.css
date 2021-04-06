@@ -101,10 +101,6 @@
     font-size: 21px;
 }
 
-.bloc-h {
-    border-bottom: 2px solid #fff;
-}
-
 .bloc-h:not(last-child), .bloc-j:not(last-child) {
     border-right: 1px solid #f1f1f1;
 }

@@ -89,12 +89,8 @@ function AppelAPI(long, lat) {
         }
 
         // Images par jour
-        for (let d = 0; d < imgJour.length; d++) {
-            if (resultatsAPI.hourly[d * 3].weather[0].icon.includes('d')) {
-                imgJour[d].src = `assets/images/jour/${resultatsAPI.hourly[d * 3].weather[0].icon}.svg`;
-            } else {
-                imgJour[d].src = `assets/images/nuit/${resultatsAPI.hourly[d * 3].weather[0].icon}.svg`;
-            }
+        for (let d = 0; d < 7; d++) {
+            imgJour[d].src = `assets/images/jour/${resultatsAPI.daily[d + 1].weather[0].icon}.svg`;
         }
 
         chargementContainer.classList.add('disparition');
