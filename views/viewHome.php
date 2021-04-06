@@ -63,7 +63,8 @@ $title = 'Deskad | Accueil';
                 </div>
             </div>
         <?php
-    }}
+    }
+  }
     ?>
 </div>
 </section>
