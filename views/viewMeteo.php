@@ -4,21 +4,25 @@ $title = 'Deskad | Météo';
 ?>
 
 <div class="container-fluid" id="container-meteo">
-    
-    <h1 class="d-flex justify-content-center">Météo</h1>
 
     <div class="bloc-meteo">
+
+        <div class="overlay-icone-chargement">
+            <img src="assets/images/chargement/circles.svg" alt="logo chargement">
+        </div>
+
+        <h1 class="d-flex justify-content-center">Météo</h1>
 
         <div class="bloc-logo-info">
 
             <div class="bloc-logo">
-                <img src="assets/images/jour/04d.svg" alt ="logo temps" class="logo-meteo">
+                <img src="" alt ="logo temps" class="logo-meteo">
             </div>
 
             <div class="bloc-info">
-                <p class="temps">Couvert</p>
-                <p class="temperature">15°</p>
-                <p class="localisation">Quimper</p>
+                <p class="temps"></p>
+                <p class="temperature"></p>
+                <!-- <p class="localisation"></p> -->
             </div>
 
         </div>
