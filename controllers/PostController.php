@@ -64,4 +64,8 @@ class PostController {
             require('views/viewPost.php');
         }
     }
+
+    public function meteo() {
+        require('views/viewMeteo.php');
+    }
 }
