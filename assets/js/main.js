@@ -70,10 +70,12 @@ function AppelAPI(long, lat) {
 
         // Images par 3h
         for (let h = 0; h < imgHeure.length; h++) {
-            if (resultatsAPI.hourly[h * 3].weather[0].icon.includes('d')) {
+            if ((resultatsAPI.hourly[h * 3].weather[0].icon).includes('d')) {
                 imgHeure[h].src = `assets/images/jour/${resultatsAPI.hourly[h * 3].weather[0].icon}.svg`;
+                console.log(imgHeure[h].src);
             } else {
                 imgHeure[h].src = `assets/images/nuit/${resultatsAPI.hourly[h * 3].weather[0].icon}.svg`;
+                console.log(imgHeure[h].src);
             }
         }
         
