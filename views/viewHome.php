@@ -14,7 +14,7 @@ $title = 'Deskad | Accueil';
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel" style="color:#333">Quoi d'neuf sur le site ?</h5>
@@ -22,8 +22,11 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 7 avril 2021</p>
+        <li>Ajout de l'article Cahier des charges.</li>
+        <br>
         <p>Le 6 avril 2021</p>
-        <li>Ajout de la page météo ! (penser à accepter la géolocalisation.)</li>
+        <li>Ajout de la page météo (penser à accepter la géolocalisation.)</li>
         <br>
         <p>Le 3 avril 2021</p>
         <li>Ajout formulaire commentaire page Article</li>
@@ -54,8 +57,9 @@ $title = 'Deskad | Accueil';
     if (isset($lastPosts)) {
     foreach ($lastPosts as $lastPost) {
         ?>
-            <div class="card" style="width: 20rem ; margin: 20px;color:#333;">
+            <div class="card" style="width:15rem;margin:20px;color:#333;">
                 <img src="assets/images/<?= $lastPost['image'] ?>" class="card-img-top" alt="<?= $lastPost['image'] ?>">
+                <span class="badge bg-secondary"><?= $lastPost['id_categories'] ?></span>
                 <div class="card-body">
                     <h5 class="card-title"><?= $lastPost['title'] ?></h5>
                     

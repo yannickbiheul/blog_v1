@@ -19,14 +19,16 @@ if (isset($fails)) {
 if (isset($fields)) {
     echo "<p style='color:red'>$fields</p>";
 }
+$date = new DateTime($post['creation_date']);
+$dateFR = $date->format('\L\e d-m-Y \à H\hi');
 ?>
 
     <div class="row d-flex justify-content-center" style="padding:10px;">
-        <small class="text-muted"><?= $post['creation_date'] ?></small>
-        <h5><?= $post['resume'] ?></h5>
+        <small class="text-muted"><?= $dateFR ?></small>
+        <h3><?= $post['resume'] ?></h3>
         <img class="rounded float-start" style="width: 40%;min-width:260px;margin:40px;" src="assets/images/<?= $post['image'] ?>" alt="<?= $post['image'] ?>">
         <br>
-        <p><?= nl2br($post['content']) ?></p>
+        <div class="d-flex flex-column align-items-center"><?= nl2br($post['content']) ?></div>
     </div>
 
     <div class="row" style="margin:40px;" id="formComment">

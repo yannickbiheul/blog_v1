@@ -18,7 +18,7 @@ class PostDao extends BaseDao {
         return $result;
     }
 
-    public function getIdUser($userMail) {
+    public function getIdUsers($userMail) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT id from users WHERE email = :email");
         $res = $req->execute([
@@ -34,22 +34,23 @@ class PostDao extends BaseDao {
         $this->_post->setImage($postDatas[0]);
         $this->_post->setContent($postDatas['content']);
         $this->_post->setCreationDate(date("Y-m-d"));
-        $this->_post->setIdUser($this->getIdUser($_SESSION['email']));
-        $this->_post->setIdCategory($postDatas['id_category']);
+        $this->_post->setIdUsers($this->getIdUsers($_SESSION['email']));
+        $this->_post->setIdCategories($postDatas['id_categories']);
+        $this->_post->setIdUsers($postDatas['id_users']);
         return $this->_post;
     }
 
     public function savePostInDb(Post $post) {
         $db = $this->dbConnect();
-        $req = $db->prepare("INSERT INTO posts(id, title, resume, image, content, creation_date, id_user, id_category) VALUES(NULL, :title, :resume, :image, :content, :creation_date, :id_user, :id_category)");
+        $req = $db->prepare("INSERT INTO posts(id, title, resume, image, content, creation_date, id_users, id_categories) VALUES(NULL, :title, :resume, :image, :content, :creation_date, :id_users, :id_categories)");
         $res = $req->execute([
             ':title' => $post->getTitle(),
             ':resume' => $post->getResume(),
             ':image' => $post->getImage(),
             ':content' => $post->getContent(),
             ':creation_date' => $post->getCreationDate(),
-            ':id_users' => $post->getIdUser(),
-            ':id_categories' => $post->getIdCategory()
+            ':id_users' => $post->getIdUsers(),
+            ':id_categories' => $post->getIdCategories()
         ]);
     }
 

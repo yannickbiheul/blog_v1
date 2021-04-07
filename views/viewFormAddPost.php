@@ -21,11 +21,16 @@ $title = 'Deskad | Ajouter Article';
     ?>
     <br>
     <form action="index.php?action=pullPost" method="POST" enctype="multipart/form-data">
-        <select class="form-select" aria-label="Default select example" name="id_category">
-            <option selected>Choisir une catégorie</option>
+        <select class="form-select" aria-label="Default select example" name="id_categories">
+            <option selected>Catégorie</option>
             <option value="1">Informatique</option>
             <option value="2">Tourisme</option>
             <option value="3">Musique</option>
+        </select>
+        <br>
+        <select class="form-select" aria-label="Default select example" name="id_users">
+            <option selected>Auteur</option>
+            <option value="1">Yannick Biheul</option>
         </select>
         <br>
         <div class="mb-3">

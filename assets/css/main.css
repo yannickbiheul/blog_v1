@@ -11,7 +11,7 @@ body {
 }
 
 .banniere {
-    height: 500px;
+    height: 450px;
 
     display: flex;
     flex-direction: column;
