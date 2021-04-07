@@ -32,12 +32,14 @@ class UserDao extends BaseDao {
         $user->setPseudo($userDatas['pseudo']);
         $user->setEmail($userDatas['email']);
         $user->setPassword($userDatas['password']);
-        $user->setSignupDate(date("Y-m-d"));
+        $user->setSignupDate(date("Y-m-d H:i:s"));
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();
         $_SESSION['email'] = $user->getEmail();
-        $_SESSION['signup_date'] = $user->getSignupDate();
+        $date = new DateTime($user->getSignupDate());
+        $dateFR = $date->format('d-m-Y \à Hhi');
+        $_SESSION['signup_date'] = $dateFR;
         if ($user->getEmail() == 'yannickbiheul@outlook.fr') {
             $_SESSION['admin'] = true;
         } else {
@@ -83,7 +85,9 @@ class UserDao extends BaseDao {
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();
         $_SESSION['email'] = $user->getEmail();
-        $_SESSION['signup_date'] = $user->getSignupDate();
+        $date = new DateTime($user->getSignupDate());
+        $dateFR = $date->format('d m Y \à H\hi');
+        $_SESSION['signup_date'] = $dateFR;
         if ($user->getEmail() == 'yannickbiheul@outlook.fr') {
             $_SESSION['admin'] = true;
         } else {

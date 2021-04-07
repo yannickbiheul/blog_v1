@@ -33,8 +33,7 @@ class PostDao extends BaseDao {
         $this->_post->setResume($postDatas['resume']);
         $this->_post->setImage($postDatas[0]);
         $this->_post->setContent($postDatas['content']);
-        $today = date("Y-m-d");
-        $this->_post->setCreationDate($today);
+        $this->_post->setCreationDate(date("Y-m-d"));
         $this->_post->setIdUser($this->getIdUser($_SESSION['email']));
         $this->_post->setIdCategory($postDatas['id_category']);
         return $this->_post;
