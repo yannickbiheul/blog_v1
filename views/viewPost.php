@@ -29,7 +29,7 @@ $dateFR = $date->format('\L\e d-m-Y \à H\hi');
         <img class="rounded float-start" style="width: 40%;min-width:260px;margin:40px;" src="assets/images/<?= $post['image'] ?>" alt="<?= $post['image'] ?>">
         <br>
         <div class="d-flex flex-column align-items-center">
-            <?= nl2br($post['content']) ?>
+            <?= $post['content'] ?>
         </div>
     </div>
 
