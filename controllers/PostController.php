@@ -12,14 +12,17 @@ class PostController {
         $this->_postService = new PostService;
     }
 
+
     public function home() {
         $lastPosts = $this->_postService->askLasPosts();
         require('views/viewHome.php');
     }
 
+
     public function formAddPost() {
         require('views/viewFormAddPost.php');
     }
+
 
     public function pullPost() {
         $this->_postDatas = $_POST;
@@ -41,28 +44,23 @@ class PostController {
         }
     }
 
+
     public function posts() {
         $posts = $this->_postService->askPosts();
         require('views/viewPosts.php');
     }
+
 
     public function post($idPost) {
         $post = $this->_postService->askOnePost($idPost);
         require('views/viewPost.php');
     }
 
-    public function checkComment($idPost) {
-        $post = $this->_postService->askOnePost($idPost);
-        $commentDatas = $_POST;
 
-        if (isset($commentDatas['pseudo']) && !empty($commentDatas['pseudo'])
-            && isset($commentDatas['comment']) && !empty($commentDatas['comment'])) {
-            $this->_postService->clearDatasComment($commentDatas);
-
-        } else {
-            $fields = 'Tous les champs sont requis';
-            require('views/viewPost.php');
-        }
+    public function sendComment($id_post) {
+        $datas = $_POST;
+        $datas['id_post'] = $id_post;
+        require('views/viewTest.php');
     }
 
     public function meteo() {

@@ -1,62 +1,77 @@
 <?php
 ob_start();
-$title = 'Deskad | ' . $post['title'];
+$title = $post['title_post'];
 ?>
 
-<div class="container">
+<div class="container" style="padding-top:80px;">
 
-<?php
-if (isset($fails)) {
-    foreach ($fails as $fail) {
-        echo "<p style='color:red'>$fail</p>";
-    }
-}
-if (isset($fields)) {
-    echo "<p style='color:red'>$fields</p>";
-}
-$date = new DateTime($post['creation_date']);
-$dateFR = $date->format('\L\e d-m-Y \à H\hi');
-?>
-    <div class="d-flex flex-column align-items-center">
-        <h1 class="text-center" style="margin-top:80px"><?= $post['title'] ?></h1>
-    </div>
-    <div class="row d-flex justify-content-center" style="padding:10px;">
-        <div class="d-flex flex-column align-items-center">
-            <small class="text-muted"><?= $dateFR ?></small>
-            <h3 class="text-center"><?= $post['resume'] ?></h3>
-        </div>
-        
-        <img class="rounded float-start" style="width: 40%;min-width:260px;margin:40px;" src="assets/images/<?= $post['image'] ?>" alt="<?= $post['image'] ?>">
-        <br>
-        <div class="d-flex flex-column align-items-center">
-            <?= $post['content'] ?>
+    <!-- TITRE ET INFOS -->
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <h1><?= $post['title_post'] ?></h1>
+            <small><?= $post['firstname_user'] ?> <?= $post['lastname_user'] ?>, <?= $post['creation_date_fr'] ?></small>
         </div>
     </div>
 
-    <div class="row" style="margin:40px;" id="formComment">
-    
-        <form method="POST" action="index.php?action=checkComment&params=<?= $post['id'] ?>">
-                <h2>Commentaire</h2>
+    <!-- RÉSUMÉ ET IMAGE -->
+
+    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <h2><?= $post['resume_post'] ?></h2>
+            <img src="assets/images/<?= $post['image_post'] ?>" alt="Illustration">
+        </div>
+    </div>
+
+    <!-- CONTENU -->
+
+    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <?= $post['content_post'] ?>
+        </div>
+    </div>
+
+    <!-- FORMULAIRE COMMENTAIRES -->
+
+    <?php
+    if (isset($_SESSION['pseudo'])) {
+    ?>
+    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <form action="index.php?action=sendComment&params=<?= $post['id_post'] ?>" method="POST">
                 <div class="mb-3">
-                    <label for="pseudo" class="form-label">Pseudo</label>
-                    <input type="text" class="form-control" id="pseudo" name="pseudo" 
-                    value="<?php
-                    if (isset($_SESSION['pseudo'])) {
-                        echo $_SESSION['pseudo'];
-                    } else {
-                        echo '';
-                    }
-                    ?>">
+                    <label for="exampleInputEmail1" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" value="<?= $_SESSION['pseudo'] ?>" name="pseudo">
                 </div>
                 <div class="mb-3">
-                    <label for="comment" class="form-label">Commentaire</label>
-                    <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
+                    <label for="exampleFormControlTextarea1" class="form-label">Votre commentaire</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="comment"></textarea>
                 </div>
-                
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
+        </div>
     </div>
-    
+    <?php
+    } else {
+    ?>
+    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <p>Vous devez être connecté pour poster un commentaire !</p>
+            <a href="index.php?action=formSignup" class="btn btn-primary">Connexion</a>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+
+    <!-- COMMENTAIRES -->
+
+    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            
+        </div>
+    </div>
+
 </div>
 
 <?php

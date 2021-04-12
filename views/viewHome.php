@@ -22,6 +22,10 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 12 avril 2021</p>
+        <li>Ajout du badge catégorie sur chaque article.</li>
+        <li>L'inscription et la connexion se font désormais sur la même page.</li>
+        <br>
         <p>Le 7 avril 2021</p>
         <li>Ajout de l'article Cahier des charges.</li>
         <br>
@@ -57,13 +61,13 @@ $title = 'Deskad | Accueil';
     if (isset($lastPosts)) {
     foreach ($lastPosts as $lastPost) {
         ?>
-            <div class="card" style="width:15rem;margin:20px;color:#333;">
-                <img src="assets/images/<?= $lastPost['image'] ?>" class="card-img-top" alt="<?= $lastPost['image'] ?>">
-                <span class="badge bg-secondary"><?= $lastPost['id_categories'] ?></span>
+            <div class="card" style="width:16rem;margin:20px;color:#333;">
+                <img src="assets/images/<?= $lastPost['image_post'] ?>" class="card-img-top" alt="<?= $lastPost['image_post'] ?>">
+                <span class="badge bg-secondary"><?= $lastPost['name_category'] ?></span>
                 <div class="card-body">
-                    <h5 class="card-title"><?= $lastPost['title'] ?></h5>
-                    
-                    <a href="index.php?action=post&params=<?= $lastPost['id'] ?>" class="btn btn-primary">Voir</a>
+                    <h5 class="card-title"><?= $lastPost['title_post'] ?></h5>
+                    <p><?= $lastPost['resume_post'] ?></p>
+                    <a href="index.php?action=post&params=<?= $lastPost['id_post'] ?>" class="btn btn-primary">Voir</a>
                 </div>
             </div>
         <?php

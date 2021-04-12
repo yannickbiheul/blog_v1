@@ -49,10 +49,7 @@
                     if (!isset($_SESSION['pseudo'])) {
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?action=formSignup">Inscription</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?action=formSignin">Connexion</a>
+                                <a class="nav-link" href="index.php?action=formSignup">Connexion</a>
                             </li>
                         <?php
                     } else {

@@ -11,12 +11,19 @@ class PostDao extends BaseDao {
         $this->_post = new Post;
     }
 
+
     public function getLastPosts() {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT * FROM posts ORDER BY id DESC LIMIT 3");
+        $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, 
+        c.id AS id_category, c.name AS name_category 
+        FROM posts AS p
+        LEFT JOIN categories AS c  
+        ON p.id_categories = c.id 
+        ORDER BY p.creation_date DESC LIMIT 3");
         $result = $req->fetchAll();
         return $result;
     }
+
 
     public function getIdUsers($userMail) {
         $db = $this->dbConnect();
@@ -27,6 +34,7 @@ class PostDao extends BaseDao {
         $result = $req->fetch();
         return $result['id'];
     }
+
 
     public function createPostObject($postDatas) {
         $this->_post->setTitle($postDatas['title']);
@@ -39,6 +47,7 @@ class PostDao extends BaseDao {
         $this->_post->setIdUsers($postDatas['id_users']);
         return $this->_post;
     }
+
 
     public function savePostInDb(Post $post) {
         $db = $this->dbConnect();
@@ -54,20 +63,45 @@ class PostDao extends BaseDao {
         ]);
     }
 
+
     public function getPosts() {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT * FROM posts ORDER BY id DESC");
-        $result = $req->fetchAll();
+        $req = $db->query("SELECT * FROM posts AS p
+        LEFT JOIN categories AS c  
+        ON p.id_categories = c.id 
+        ORDER BY p.creation_date DESC");
+        $result = $req->fetch();
         return $result;
     }
 
+
     public function getOnePost($idPost) {
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT * FROM posts WHERE id = :id");
-        $res = $req->execute([
-            ':id' => $idPost
+        $req = $db->prepare("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, p.content AS content_post, DATE_FORMAT(p.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, p.id_users AS id_post_user, p.id_categories AS id_post_category, 
+        u.id AS id_user, u.firstname AS firstname_user, u.lastname AS lastname_user, 
+        c.id AS id_category, c.name AS name_category 
+        FROM posts AS p 
+        LEFT JOIN categories as c 
+        ON p.id_categories = c.id
+        LEFT JOIN users AS u 
+        ON p.id_users = u.id 
+        WHERE p.id = :id");
+        $req->execute([
+        ':id' => $idPost
         ]);
         $result = $req->fetch();
         return $result;
+    }
+
+
+    public function saveComment($commentDatas) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("INSERT INTO comments (comment, date_comment, id_posts, id_users) VALUES (:comment, :date_comment, :id_posts, :id_users)");
+        $res = $req->execute([
+            ':comment' => $commentDatas['comment'],
+            ':date_comment' => $commentDatas['date'],
+            ':id_posts' => $commentDatas['idPost'],
+            ':id_users' => $commentDatas['idUser']
+        ]);
     }
 }

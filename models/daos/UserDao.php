@@ -33,6 +33,7 @@ class UserDao extends BaseDao {
         $user->setEmail($userDatas['email']);
         $user->setPassword($userDatas['password']);
         $user->setSignupDate(date("Y-m-d H:i:s"));
+        $_SESSION['id'] = $user->getId();
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();
@@ -81,6 +82,7 @@ class UserDao extends BaseDao {
         $user->setEmail($datas['email']);
         $user->setPassword($datas['password']);
         $user->setSignupDate($datas['signup_date']);
+        $_SESSION['id'] = $user->getId();
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();

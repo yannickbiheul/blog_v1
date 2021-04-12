@@ -3,9 +3,9 @@ ob_start();
 $title = 'Deskad | Contact';
 ?>
 
-<section id="connect" class="container" style="padding-top:80px;">
-    <div class="row">
-        <div class="col-lg inscription">
+<section id="connect" class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 inscription">
 
         <?php
         if (isset($fails)) {
@@ -77,7 +77,7 @@ $title = 'Deskad | Contact';
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Votre message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="message"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="message"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 <a type="button" href="index.php?action=home" class="btn btn-danger">Annuler</a>
