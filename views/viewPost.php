@@ -19,7 +19,9 @@ $title = $post['title_post'];
     <div class="row d-flex justify-content-center" style="margin-top:40px;">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
             <h2><?= $post['resume_post'] ?></h2>
-            <img src="assets/images/<?= $post['image_post'] ?>" alt="Illustration">
+            <a href="assets/images/<?= $post['image_post'] ?>">
+                <img src="assets/images/<?= $post['image_post'] ?>" alt="<?= $post['image_post'] ?>">
+            </a>
         </div>
     </div>
 

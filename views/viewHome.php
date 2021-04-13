@@ -26,6 +26,7 @@ $title = 'Deskad | Accueil';
           <li>On peut maintenant laisser des commentaires sous les articles.</li>
           <li>Modifications page d'accueil</li>
           <li>La météo fonctionne sur mobile</li>
+          <li>Ajout page "À propos"</li>
         <br>
         <p>Le 12 avril 2021</p>
           <li>Ajout du badge catégorie sur chaque article.</li>

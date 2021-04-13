@@ -1,3 +1,2 @@
-<h1>TEST</h1>
+<h1>À propos de moi</h1>
 
-<pre><?php print_r($datas) ?></pre>

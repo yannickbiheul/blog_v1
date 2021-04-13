@@ -5,9 +5,11 @@ session_start();
 require('controllers/UserController.php');
 require('controllers/PostController.php');
 require('controllers/CommentController.php');
+require('controllers/MainController.php');
 $userController = new UserController;
 $postController = new PostController;
 $commentController = new CommentController;
+$mainController = new MainController;
 
 if (isset($_GET['action']) && isset($_GET['params'])) {
 
@@ -17,9 +19,11 @@ if (isset($_GET['action']) && isset($_GET['params'])) {
     if (method_exists($userController, $action)) {
         $userController->$action($params);
     } else if (method_exists($postController, $action)) {
-            $postController->$action($params);
-    } else if (method_exists($commentController, $action)){
-            $commentController->$action($params);
+        $postController->$action($params);
+    } else if (method_exists($commentController, $action)) {
+        $commentController->$action($params);
+    } else if (method_exists($mainController, $action)) {
+        $mainController->$action($params);
     } else {
         $postController->home();
     }
@@ -31,9 +35,11 @@ if (isset($_GET['action']) && isset($_GET['params'])) {
     if (method_exists($userController, $action)) {
         $userController->$action();
     } else if (method_exists($postController, $action)) {
-            $postController->$action();
-    } else if (method_exists($commentController, $action)){
-            $commentController->$action();
+        $postController->$action();
+    } else if (method_exists($commentController, $action)) {
+        $commentController->$action();
+    } else if (method_exists($mainController, $action)) {
+        $mainController->$action();
     } else {
         $postController->home();
     }
