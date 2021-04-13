@@ -21,34 +21,41 @@ $title = 'Deskad | Ajouter Article';
     ?>
     <br>
     <form action="index.php?action=pullPost" method="POST" enctype="multipart/form-data">
+
         <select class="form-select" aria-label="Default select example" name="id_categories">
             <option selected>Catégorie</option>
             <option value="1">Construction du blog</option>
             <option value="2">Informatique</option>
             <option value="3">Tourisme</option>
         </select>
+
         <br>
-        <select class="form-select" aria-label="Default select example" name="id_users">
-            <option selected>Auteur</option>
-            <option value="1">Yannick Biheul</option>
-        </select>
-        <br>
+
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titre</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
         </div>
+
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Résumé</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resume"></textarea>
         </div>
+
         <div class="mb-3">
             <label for="formFile" class="form-label">Image</label>
             <input class="form-control" type="file" id="formFile" name="image">
         </div>
+
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Contenu</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="content"></textarea>
+            <label for="exampleFormControlInput1" class="form-label">Titre 1</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="title1">
         </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Paragraphe 1</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="paragraph1"></textarea>
+        </div>
+
         <button type="submit" class="btn btn-primary">Envoyer</button>
         <a type="button" href="index.php?action=home" class="btn btn-danger">Annuler</a>
     </form>
