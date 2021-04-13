@@ -38,7 +38,14 @@ $title = $post['title_post'];
     ?>
     <div class="row d-flex justify-content-center" style="margin-top:40px;">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-            <form action="index.php?action=sendComment&params=<?= $post['id_post'] ?>" method="POST">
+        <?php
+        if (isset($errors)) {
+            ?>
+                <p style="color:red;"><?= $errors ?></p>
+            <?php
+        }
+        ?>
+            <form action="index.php?action=getCommentDatas&params=<?= $post['id_post'] ?>" method="POST">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Pseudo</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" value="<?= $_SESSION['pseudo'] ?>" name="pseudo">
@@ -68,7 +75,16 @@ $title = $post['title_post'];
 
     <div class="row d-flex justify-content-center" style="margin-top:40px;">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-            
+            <?php
+            if (isset($commentDatas)) {
+                foreach ($commentDatas as $commentData) {
+                ?>
+                    <p><strong><?= $commentData['pseudo'] ?></strong>, <?= $commentData['date_comment_fr'] ?></p>
+                    <p><?= $commentData['comment'] ?></p>
+                <?php
+                }
+            }
+            ?>
         </div>
     </div>
 

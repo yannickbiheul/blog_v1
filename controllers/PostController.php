@@ -12,18 +12,18 @@ class PostController {
         $this->_postService = new PostService;
     }
 
-
+                                                            /* ACCUEIL */
     public function home() {
         $lastPosts = $this->_postService->askLasPosts();
         require('views/viewHome.php');
     }
 
-
+                                                            /* FORMULAIRE AJOUT ARTICLE */
     public function formAddPost() {
         require('views/viewFormAddPost.php');
     }
 
-
+                                                            /* AJOUT ARTICLE */
     public function pullPost() {
         $this->_postDatas = $_POST;
         $image = $this->_postService->checkImage($_FILES);
@@ -44,25 +44,26 @@ class PostController {
         }
     }
 
-
+                                                            /* AFFICHER TOUS LES ARTICLES */
     public function posts() {
         $posts = $this->_postService->askPosts();
         require('views/viewPosts.php');
     }
 
-
+                                                            /* AFFICHER 1 ARTICLE */
     public function post($idPost) {
         $post = $this->_postService->askOnePost($idPost);
+        $commentDatas = $this->displayComments($idPost);
         require('views/viewPost.php');
     }
 
-
-    public function sendComment($id_post) {
-        $datas = $_POST;
-        $datas['id_post'] = $id_post;
-        require('views/viewTest.php');
+                                                            /* AFFICHER LES COMMENTAIRES */
+    public function displayComments($id_post) {
+        $commentDatas = $this->_postService->askComments($id_post);
+        return $commentDatas;
     }
 
+                                                            /* AFFICHER LA METEO */
     public function meteo() {
         require('views/viewMeteo.php');
     }

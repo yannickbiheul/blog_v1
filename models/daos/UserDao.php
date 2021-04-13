@@ -5,7 +5,7 @@ require 'models/entities/User.php';
 
 class UserDao extends BaseDao {
 
-    public function checkMail($email) {
+    public function getByMail($email) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT * FROM users WHERE email = :email");
         $res = $req->execute([
@@ -15,7 +15,17 @@ class UserDao extends BaseDao {
         return $result;
     }
 
-    public function checkPseudo($pseudo) {
+    public function getIdUser($pseudo) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT id FROM users WHERE pseudo = :pseudo");
+        $res = $req->execute([
+            ':pseudo' => $pseudo
+        ]);
+        return $res;
+    }
+
+    
+    public function getByPseudo($pseudo) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT * FROM users WHERE pseudo = :pseudo");
         $res = $req->execute([
@@ -25,6 +35,7 @@ class UserDao extends BaseDao {
         return $result;
     }
 
+
     public function createObjectUser($userDatas): User {
         $user = new User;
         $user->setFirstname($userDatas['firstname']);
@@ -33,7 +44,7 @@ class UserDao extends BaseDao {
         $user->setEmail($userDatas['email']);
         $user->setPassword($userDatas['password']);
         $user->setSignupDate(date("Y-m-d H:i:s"));
-        $_SESSION['id'] = $user->getId();
+
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();
@@ -49,30 +60,6 @@ class UserDao extends BaseDao {
         return $user;
     }
 
-    public function saveMemberinDb(USER $user) {
-        $db = $this->dbConnect();
-        $req = $db->prepare("INSERT INTO users(id, firstname, lastname, pseudo, email, password, signup_date) VALUES(NULL, :firstname, :lastname, :pseudo, :email, :password, :signupDate)");
-        $res = $req->execute([
-            ':firstname' => $user->getFirstname(),
-            ':lastname' => $user->getLastname(),
-            ':pseudo' => $user->getPseudo(),
-            ':email' => $user->getEmail(),
-            ':password' => $user->getPassword(),
-            ':signupDate' => $user->getSignupDate()
-        ]);
-    }
-
-    public function updateMemberinDb(USER $user) {
-        $db = $this->dbConnect();
-        $req = $db->prepare("UPDATE users SET firstname = :firstname, lastname = :lastname, pseudo = :pseudo, email = :email, password = :password WHERE email = :email");
-        $res = $req->execute([
-            ':firstname' => $user->getFirstname(),
-            ':lastname' => $user->getLastname(),
-            ':pseudo' => $user->getPseudo(),
-            ':email' => $user->getEmail(),
-            ':password' => $user->getPassword()
-        ]);
-    }
 
     public function createObjectConnectUser($datas): User {
         $user = new User;
@@ -82,7 +69,7 @@ class UserDao extends BaseDao {
         $user->setEmail($datas['email']);
         $user->setPassword($datas['password']);
         $user->setSignupDate($datas['signup_date']);
-        $_SESSION['id'] = $user->getId();
+
         $_SESSION['firstname'] = $user->getFirstname();
         $_SESSION['lastname'] = $user->getLastname();
         $_SESSION['pseudo'] = $user->getPseudo();
@@ -96,6 +83,33 @@ class UserDao extends BaseDao {
             $_SESSION['admin'] = false;
         }
         return $user;
+    }
+
+
+    public function saveMemberinDb(USER $user) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("INSERT INTO users(id, firstname, lastname, pseudo, email, password, signup_date) VALUES(NULL, :firstname, :lastname, :pseudo, :email, :password, :signupDate)");
+        $res = $req->execute([
+            ':firstname' => $user->getFirstname(),
+            ':lastname' => $user->getLastname(),
+            ':pseudo' => $user->getPseudo(),
+            ':email' => $user->getEmail(),
+            ':password' => $user->getPassword(),
+            ':signupDate' => $user->getSignupDate()
+        ]);
+    }
+
+
+    public function updateMemberinDb(USER $user) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE users SET firstname = :firstname, lastname = :lastname, pseudo = :pseudo, email = :email, password = :password WHERE email = :email");
+        $res = $req->execute([
+            ':firstname' => $user->getFirstname(),
+            ':lastname' => $user->getLastname(),
+            ':pseudo' => $user->getPseudo(),
+            ':email' => $user->getEmail(),
+            ':password' => $user->getPassword()
+        ]);
     }
 
 }

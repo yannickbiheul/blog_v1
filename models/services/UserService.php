@@ -11,13 +11,18 @@ class UserService {
         $this->_userDao = new UserDao;
     }
 
+    public function askIdUser($pseudo) {
+        $idUser = $this->_userDao->getIdUser($pseudo);
+        return $idUser;
+    }
+
     public function isMailExists($email) {
-        $result = $this->_userDao->checkMail($email);
+        $result = $this->_userDao->getByMail($email);
         return $result;
     }
 
     public function isPseudoExists($pseudo) {
-        $isPseudo = $this->_userDao->checkPseudo($pseudo);
+        $isPseudo = $this->_userDao->getByPseudo($pseudo);
         return $isPseudo;
     }
 

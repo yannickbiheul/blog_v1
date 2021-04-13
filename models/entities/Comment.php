@@ -3,8 +3,8 @@
 class Comment {
     private $_comment;
     private $_dateComment;
-    private $_idUsers;
     private $_idPosts;
+    private $_idUsers;
 
     public function getComment() {
         return $this->_comment;
@@ -24,15 +24,6 @@ class Comment {
         return $this;
     }
 
-    public function getIdUsers() {
-        return $this->_idUsers;
-    }
-
-    public function setIdUsers($idUsers) {
-        $this->_idUsers = $idUsers;
-        return $this;
-    }
-
     public function getIdPosts() {
         return $this->_idPosts;
     }
@@ -42,5 +33,13 @@ class Comment {
         return $this;
     }
 
+    public function getIdUsers() {
+        return $this->_idUsers;
+    }
+
+    public function setIdUsers($idUsers) {
+        $this->_idUsers = $idUsers;
+        return $this;
+    }
 
 }

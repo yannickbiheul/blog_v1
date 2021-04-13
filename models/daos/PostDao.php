@@ -11,7 +11,7 @@ class PostDao extends BaseDao {
         $this->_post = new Post;
     }
 
-
+                                                            /* RECUPERER LES 3 DERNIERS ARTICLES */
     public function getLastPosts() {
         $db = $this->dbConnect();
         $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, 
@@ -24,7 +24,7 @@ class PostDao extends BaseDao {
         return $result;
     }
 
-
+                                                            /* RECUPERER ID UTILISATEUR */
     public function getIdUsers($userMail) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT id from users WHERE email = :email");
@@ -35,7 +35,7 @@ class PostDao extends BaseDao {
         return $result['id'];
     }
 
-
+                                                            /* CREER OBJET ARTICLE */
     public function createPostObject($postDatas) {
         $this->_post->setTitle($postDatas['title']);
         $this->_post->setResume($postDatas['resume']);
@@ -48,7 +48,7 @@ class PostDao extends BaseDao {
         return $this->_post;
     }
 
-
+                                                            /* ENREGISTRER ARTICLE DANS BDD */
     public function savePostInDb(Post $post) {
         $db = $this->dbConnect();
         $req = $db->prepare("INSERT INTO posts(id, title, resume, image, content, creation_date, id_users, id_categories) VALUES(NULL, :title, :resume, :image, :content, :creation_date, :id_users, :id_categories)");
@@ -63,7 +63,7 @@ class PostDao extends BaseDao {
         ]);
     }
 
-
+                                                            /* RECUPERER TOUS LES ARTICLES */
     public function getPosts() {
         $db = $this->dbConnect();
         $req = $db->query("SELECT * FROM posts AS p
@@ -74,7 +74,7 @@ class PostDao extends BaseDao {
         return $result;
     }
 
-
+                                                            /* RECUPERER 1 ARTICLE */
     public function getOnePost($idPost) {
         $db = $this->dbConnect();
         $req = $db->prepare("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, p.content AS content_post, DATE_FORMAT(p.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, p.id_users AS id_post_user, p.id_categories AS id_post_category, 
@@ -93,7 +93,7 @@ class PostDao extends BaseDao {
         return $result;
     }
 
-
+                                                            /* ENREGISTRER COMMENTAIRE DANS BDD */
     public function saveComment($commentDatas) {
         $db = $this->dbConnect();
         $req = $db->prepare("INSERT INTO comments (comment, date_comment, id_posts, id_users) VALUES (:comment, :date_comment, :id_posts, :id_users)");
@@ -103,5 +103,20 @@ class PostDao extends BaseDao {
             ':id_posts' => $commentDatas['idPost'],
             ':id_users' => $commentDatas['idUser']
         ]);
+    }
+
+                                                            /* RECUPERER LES COMMENTAIRES */
+    public function getComments($id_post) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT c.comment, DATE_FORMAT(c.date_comment, 'le %d/%m/%Y à %Hh%i') AS date_comment_fr, u.pseudo 
+        FROM comments AS c 
+        LEFT JOIN users AS u 
+        ON c.id_users = u.id
+        WHERE id_posts = :id_posts");
+        $req->execute([
+            ':id_posts' => $id_post
+        ]);
+        $result = $req->fetchAll();
+        return $result;
     }
 }

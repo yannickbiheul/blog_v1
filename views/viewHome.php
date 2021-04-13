@@ -22,30 +22,33 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 13 avril 2021</p>
+          <li>On peut maintenant laisser des commentaires sous les articles.</li>
+        <br>
         <p>Le 12 avril 2021</p>
-        <li>Ajout du badge catégorie sur chaque article.</li>
-        <li>L'inscription et la connexion se font désormais sur la même page.</li>
+          <li>Ajout du badge catégorie sur chaque article.</li>
+          <li>L'inscription et la connexion se font désormais sur la même page.</li>
         <br>
         <p>Le 7 avril 2021</p>
-        <li>Ajout de l'article Cahier des charges.</li>
+          <li>Ajout de l'article Cahier des charges.</li>
         <br>
         <p>Le 6 avril 2021</p>
-        <li>Ajout de la page météo (penser à accepter la géolocalisation.)</li>
+          <li>Ajout de la page météo (penser à accepter la géolocalisation.)</li>
         <br>
         <p>Le 3 avril 2021</p>
-        <li>Ajout formulaire commentaire page Article</li>
+          <li>Ajout formulaire commentaire page Article</li>
         <br>
         <p>Le 2 avril 2021</p>
-        <li>Ajout page articles</li>
-        <li>Ajout page Article</li>
+          <li>Ajout page articles</li>
+          <li>Ajout page Article</li>
         <br>
         <p>le 1 avril 2021</p>
-        <li>Possibilité de se connecter</li>
-        <li>Formulaire de contact fonctionnel</li>
-        <li>Enregistrement article dans base de données (admin)</li>
+          <li>Possibilité de se connecter</li>
+          <li>Formulaire de contact fonctionnel</li>
+          <li>Enregistrement article dans base de données (admin)</li>
         <br>
         <p>Le 31 mars 2021</p>
-        <li>Possibilité de s'inscrire et modifier ses données.</li>
+          <li>Possibilité de s'inscrire et modifier ses données.</li>
       </ul>
       </div>
       <div class="modal-footer">

@@ -11,13 +11,13 @@ class PostService {
         $this->_postDao = new PostDao;
     }
 
-
+                                                            /* DEMANDER LES 3 DERNIERS ARTCLES */
     public function askLasPosts() {
         $lastPosts = $this->_postDao->getLastPosts();
         return $lastPosts;
     }
 
-
+                                                            /* VERIFIER IMAGE ARTICLE */
     public function checkImage($files) {
         if (isset($files['image'])) {
             $dossier = 'assets/images/';
@@ -52,24 +52,29 @@ class PostService {
         }
     }
 
-
+                                                            /* ENVOYER ARTICLE DANS BDD */
     public function sendPost($postDatas) {
         $this->_post = $this->_postDao->createPostObject($postDatas);
         $this->_postDao->savePostInDb($this->_post);
         return $this->_post;
     }
 
-
+                                                            /* DEMANDER TOUS LES ARTICLES */
     public function askPosts() {
         $posts = $this->_postDao->getPosts();
         return $posts;
     }
 
-
+                                                            /* DEMANDER UN ARTICLE */
     public function askOnePost($idPost) {
         $post = $this->_postDao->getOnePost($idPost);
         return $post;
     }
 
+                                                            /* DEMANDER LES COMMENTAIRES */
+    public function askComments($id_post) {
+        $commentDatas = $this->_postDao->getComments($id_post);
+        return $commentDatas;
+    }
 
 }
