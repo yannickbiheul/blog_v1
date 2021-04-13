@@ -24,6 +24,7 @@ $title = 'Deskad | Accueil';
       <ul>
         <p>Le 13 avril 2021</p>
           <li>On peut maintenant laisser des commentaires sous les articles.</li>
+          <li>Modifications page d'accueil</li>
         <br>
         <p>Le 12 avril 2021</p>
           <li>Ajout du badge catégorie sur chaque article.</li>
@@ -64,12 +65,15 @@ $title = 'Deskad | Accueil';
     if (isset($lastPosts)) {
     foreach ($lastPosts as $lastPost) {
         ?>
-            <div class="card" style="width:16rem;margin:20px;color:#333;">
+            <div class="card" style="width:260px;margin:20px;color:#333;box-shadow:4px 4px 4px #000">
+              <div class="card-header">
+                <?= $lastPost['name_category'] ?>
+              </div>
                 <img src="assets/images/<?= $lastPost['image_post'] ?>" class="card-img-top" alt="<?= $lastPost['image_post'] ?>">
-                <span class="badge bg-secondary"><?= $lastPost['name_category'] ?></span>
                 <div class="card-body">
                     <h5 class="card-title"><?= $lastPost['title_post'] ?></h5>
                     <p><?= $lastPost['resume_post'] ?></p>
+                    <p><small><?= $lastPost['creation_date_fr'] ?></small></p>
                     <a href="index.php?action=post&params=<?= $lastPost['id_post'] ?>" class="btn btn-primary">Voir</a>
                 </div>
             </div>

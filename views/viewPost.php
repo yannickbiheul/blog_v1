@@ -73,7 +73,7 @@ $title = $post['title_post'];
 
     <!-- COMMENTAIRES -->
 
-    <div class="row d-flex justify-content-center" style="margin-top:40px;">
+    <div class="row d-flex justify-content-center" style="margin-top:40px;margin-bottom:40px;">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
             <?php
             if (isset($commentDatas)) {

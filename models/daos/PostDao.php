@@ -14,7 +14,7 @@ class PostDao extends BaseDao {
                                                             /* RECUPERER LES 3 DERNIERS ARTICLES */
     public function getLastPosts() {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, 
+        $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, DATE_FORMAT(p.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, 
         c.id AS id_category, c.name AS name_category 
         FROM posts AS p
         LEFT JOIN categories AS c  
@@ -66,11 +66,13 @@ class PostDao extends BaseDao {
                                                             /* RECUPERER TOUS LES ARTICLES */
     public function getPosts() {
         $db = $this->dbConnect();
-        $req = $db->query("SELECT * FROM posts AS p
+        $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, p.content AS content_post, DATE_FORMAT(p.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, p.id_users AS id_post_user, p.id_categories AS id_post_category, 
+        c.id AS id_category, c.name AS name_category 
+        FROM posts AS p
         LEFT JOIN categories AS c  
         ON p.id_categories = c.id 
         ORDER BY p.creation_date DESC");
-        $result = $req->fetch();
+        $result = $req->fetchAll();
         return $result;
     }
 
