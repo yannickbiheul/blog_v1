@@ -24,8 +24,8 @@ $title = 'Deskad | Inscription';
                 <div class="row">
                     <div class="col-md">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-                        <div id="emailHelp" class="form-text"></div>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+                        <div id="emailHelp" class="form-email"></div>
                     </div>
                     <div class="col-md">
                         <label for="password" class="form-label">Mot de passe</label>

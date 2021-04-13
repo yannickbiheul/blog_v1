@@ -178,7 +178,7 @@ class UserController {
                 require('views/viewMemberPage.php');
             } else {
                 $fails = $this->_errors;
-                require('views/viewFormSignin.php');
+                require('views/viewFormSignup.php');
             }
 
         } else {

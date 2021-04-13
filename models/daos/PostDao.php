@@ -113,7 +113,8 @@ class PostDao extends BaseDao {
         FROM comments AS c 
         LEFT JOIN users AS u 
         ON c.id_users = u.id
-        WHERE id_posts = :id_posts");
+        WHERE id_posts = :id_posts 
+        ORDER BY c.date_comment DESC");
         $req->execute([
             ':id_posts' => $id_post
         ]);

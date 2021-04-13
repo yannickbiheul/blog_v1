@@ -8,7 +8,7 @@ $title = "Deskad | " . $_SESSION['pseudo'];
 <section id="member-page">
     <div class="container container-member" style="padding-top:80px;">
         <div class="card" style="width: 20rem;">
-        <img src="assets/images/user.png" class="card-img-top" alt="user">
+        <img src="assets/images/user.png" class="card-img-top" alt="user" style="width: 150px; margin: 20px auto;">
         <div class="card-body">
             <h5 class="card-title"><?= $_SESSION['pseudo'] ?></h5>
             <ul>
