@@ -24,14 +24,16 @@ class PostController {
     }
 
                                                             /* AJOUT ARTICLE */
-    public function pullPost() {
+    public function createPostDatas() {
         $this->_postDatas = $_POST;
-        $image = $this->_postService->checkImage($_FILES);
-        array_push($this->_postDatas, $image);
+        $title1 = '<h3>' . $this->_postDatas['title1'] . '</h3>';
+        $paragraph1 = '<p>' . $this->_postDatas['paragraph1'] . '</p>';
+        $this->_postDatas['content'] = $title1 . $paragraph1;
+        $this->_postDatas['image'] = $this->_postService->checkImage($_FILES);
+        $this->_postDatas['creation_date'] = date("Y-m-d H:i:s");
+        $this->_postDatas['id_users'] = $this->_postService->askIdUser($_SESSION['email']);
 
-        if (isset($this->_postDatas['id_categories']) && isset($this->_postDatas['id_users'])
-            && isset($this->_postDatas['title']) && isset($this->_postDatas['resume']) 
-            && isset($this->_postDatas[0]) && isset($this->_postDatas['content'])) {
+        if (isset($this->_postDatas['id_categories']) && isset($this->_postDatas['title']) && isset($this->_postDatas['resume'])) {
             
             $this->_postService->sendPost($this->_postDatas);
             $successSend = 'Article enregistré !';

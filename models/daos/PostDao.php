@@ -11,7 +11,7 @@ class PostDao extends BaseDao {
         $this->_post = new Post;
     }
 
-                                                            /* RECUPERER LES 3 DERNIERS ARTICLES */
+                                                            /* RECUPERER LES 4 DERNIERS ARTICLES */
     public function getLastPosts() {
         $db = $this->dbConnect();
         $req = $db->query("SELECT p.id AS id_post, p.title AS title_post, p.resume AS resume_post, p.image AS image_post, DATE_FORMAT(p.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, 
@@ -19,7 +19,7 @@ class PostDao extends BaseDao {
         FROM posts AS p
         LEFT JOIN categories AS c  
         ON p.id_categories = c.id 
-        ORDER BY p.creation_date DESC LIMIT 3");
+        ORDER BY p.creation_date DESC LIMIT 4");
         $result = $req->fetchAll();
         return $result;
     }
@@ -39,10 +39,9 @@ class PostDao extends BaseDao {
     public function createPostObject($postDatas) {
         $this->_post->setTitle($postDatas['title']);
         $this->_post->setResume($postDatas['resume']);
-        $this->_post->setImage($postDatas[0]);
+        $this->_post->setImage($postDatas['image']);
         $this->_post->setContent($postDatas['content']);
-        $this->_post->setCreationDate(date("Y-m-d"));
-        $this->_post->setIdUsers($this->getIdUsers($_SESSION['email']));
+        $this->_post->setCreationDate($postDatas['creation_date']);
         $this->_post->setIdCategories($postDatas['id_categories']);
         $this->_post->setIdUsers($postDatas['id_users']);
         return $this->_post;

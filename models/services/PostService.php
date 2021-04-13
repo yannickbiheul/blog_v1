@@ -11,7 +11,7 @@ class PostService {
         $this->_postDao = new PostDao;
     }
 
-                                                            /* DEMANDER LES 3 DERNIERS ARTCLES */
+                                                            /* DEMANDER LES 4 DERNIERS ARTCLES */
     public function askLasPosts() {
         $lastPosts = $this->_postDao->getLastPosts();
         return $lastPosts;
@@ -20,10 +20,13 @@ class PostService {
                                                             /* VERIFIER IMAGE ARTICLE */
     public function checkImage($files) {
         if (isset($files['image'])) {
+        
             $dossier = 'assets/images/';
-            $fichier = basename($files['image']['name']);
             $extensions = array('.png', '.jpg', '.jpeg');
             $extension = strrchr($files['image']['name'], '.');
+            $nomSeul = explode('.', $files['image']['name'])[0];
+            $nomComplet = $dossier . basename($files['image']['name']);
+            $fichier = basename($files['image']['name']);
             $taille_max = 5000000;
             $taille = filesize($files['image']['tmp_name']);
             $fichier = strtr($fichier, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
@@ -38,6 +41,10 @@ class PostService {
                 array_push($errors, 'Le fichier doit être de type png, jpg ou jpeg !');
             }
 
+            while (file_exists($dossier . $fichier)) {
+                $fichier = rand(1, 100).$fichier;
+            }
+
             if (empty($errors)) {
 
                 if (move_uploaded_file($files['image']['tmp_name'], $dossier . $fichier)) {
@@ -50,6 +57,12 @@ class PostService {
                 require('views/viewFormAddPost.php');
             }
         }
+    }
+
+
+    public function askIdUser($email) {
+        $idUser = $this->_postDao->getIdUsers($email);
+        return $idUser;
     }
 
                                                             /* ENVOYER ARTICLE DANS BDD */

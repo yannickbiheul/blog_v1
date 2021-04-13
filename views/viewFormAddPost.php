@@ -20,7 +20,7 @@ $title = 'Deskad | Ajouter Article';
         }
     ?>
     <br>
-    <form action="index.php?action=pullPost" method="POST" enctype="multipart/form-data">
+    <form action="index.php?action=createPostDatas" method="POST" enctype="multipart/form-data">
 
         <select class="form-select" aria-label="Default select example" name="id_categories">
             <option selected>Catégorie</option>
