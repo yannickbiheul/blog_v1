@@ -17,6 +17,12 @@ class PostService {
         return $lastPosts;
     }
 
+
+    public function askCategories() {
+        $datasCategories = $this->_postDao->getCategories();
+        return $datasCategories;
+    }
+
                                                             /* VERIFIER IMAGE ARTICLE */
     public function checkImage($files) {
         if (isset($files['image'])) {

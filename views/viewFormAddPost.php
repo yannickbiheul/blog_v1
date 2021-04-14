@@ -24,9 +24,13 @@ $title = 'Deskad | Ajouter Article';
 
         <select class="form-select" aria-label="Default select example" name="id_categories">
             <option selected>Catégorie</option>
-            <option value="1">Construction du blog</option>
-            <option value="2">Informatique</option>
-            <option value="3">Tourisme</option>
+            <?php
+            foreach ($dataCategories as $data) {
+            ?>
+            <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
+            <?php
+            }
+            ?>
         </select>
 
         <br>

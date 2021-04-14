@@ -6,11 +6,14 @@ $title = 'Deskad | Accueil';
 <section id="accueil">
     <div class="banniere container-fluid">
         <h1>Deskad</h1>
+        
 
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Quoi d'neuf ?
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -22,6 +25,11 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 14 avril 2021</p>
+          <li>Modifs formulaire ajout article (admin).</li>
+          <li>Ajout article Alex Kidd.</li>
+          <li>Ajout d'un footer (pied de page) avec liens vers GitHub et Facebook</li>
+        <br>
         <p>Le 13 avril 2021</p>
           <li>On peut maintenant laisser des commentaires sous les articles.</li>
           <li>Modifications page d'accueil.</li>

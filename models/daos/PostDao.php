@@ -94,6 +94,14 @@ class PostDao extends BaseDao {
         return $result;
     }
 
+
+    public function getCategories() {
+        $db = $this->dbConnect();
+        $req = $db->query("SELECT * FROM categories");
+        $result = $req->fetchAll();
+        return $result;
+    }
+
                                                             /* ENREGISTRER COMMENTAIRE DANS BDD */
     public function saveComment($commentDatas) {
         $db = $this->dbConnect();

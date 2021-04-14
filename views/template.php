@@ -5,7 +5,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title><?= $title ?></title>
     <!-- DESCRIPTION -->
-    <meta name='description' content=''>
+    <meta name='description' content="Le blog d'un gars qui apprend le développement web.">
     <!-- CSS -->
     <link rel='stylesheet' href='assets/css/main.css'>
     <!-- GOOGLE FONTS -->
@@ -78,6 +78,18 @@
     <main>
         <?= $content ?>
     </main>
+
+    <footer>
+        <div class="footer1">
+        </div>
+        <div class="footer2">
+            <p>©2021 - Yannick Biheul<p>
+        </div>
+        <div class="footer3">
+            <a href="https://github.com/yannickbiheul/blog_v1" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/Deskad.fr" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
 
 
     <!-- JAVASCRIPT -->

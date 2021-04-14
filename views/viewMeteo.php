@@ -18,7 +18,7 @@ $title = 'Deskad | Météo';
         <div class="col col-lg-6 d-flex justify-content-center" style="width:260px;">
             <img src="" alt="logo temps" class="logo-meteo" style="width: 200px;">
         </div>
-        <div class="col col-lg-6 d-flex flex-column justify-content-center align-items-center">
+        <div class="col col-lg-6 d-flex flex-column justify-content-center align-items-center" style="width: 100%">
             <p class="temps" style="font-size:3rem;"></p>
             <p class="temperature" style="font-size:2rem;"></p>
         </div>

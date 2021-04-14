@@ -20,6 +20,7 @@ class PostController {
 
                                                             /* FORMULAIRE AJOUT ARTICLE */
     public function formAddPost() {
+        $dataCategories = $this->_postService->askCategories();
         require('views/viewFormAddPost.php');
     }
 
