@@ -43,4 +43,10 @@ class GalleryController {
         }
     }
 
+    public function viewPhoto($idPhoto) {
+        $photo = $this->_galleryService->askOnePhoto($idPhoto);
+        // $commentDatas = $this->displayComments($idPhoto);
+        require('views/viewPhoto.php');
+    }
+
 }

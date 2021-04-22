@@ -42,4 +42,23 @@ class GalleryDao extends BaseDao {
             ':id_categories' => $gallery->getIdCategories()
         ]);
     }
+
+    public function getOnePhoto($idPhoto) {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT g.id AS id_gallery, g.title AS title_gallery, g.photo AS photo_gallery, DATE_FORMAT(g.creation_date, 'le %d/%m/%Y à %Hh%i') AS creation_date_fr, 
+        g.id_pseudo AS id_user_gallery, g.id_categories AS id_category_gallery, 
+        u.id AS id_user, u.pseudo AS pseudo_user, 
+        c.id AS id_category, c.name AS name_category 
+        FROM gallery AS g  
+        LEFT JOIN categories AS c  
+        ON g.id_categories = c.id 
+        LEFT JOIN users AS u  
+        ON g.id_pseudo = u.id  
+        WHERE g.id = :id");
+        $req->execute([
+        ':id' => $idPhoto
+        ]);
+        $result = $req->fetch();
+        return $result;
+    }
 }

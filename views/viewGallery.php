@@ -7,7 +7,7 @@ $title = 'Deskad | Gallery';
 
 <div class="row d-flex justify-content-center">
 
-    <div class="col col-lg-6 d-flex justify-content-center" style="gap:10px;">
+    <div class="col col-lg-12 d-flex justify-content-center flex-wrap" style="gap:10px;">
     
         <div class="card" style="width: 18rem;box-shadow: 4px 4px 4px #ccc;">
             <div class="card-body d-flex justify-content-center align-items-center">
@@ -26,7 +26,7 @@ $title = 'Deskad | Gallery';
                 <h5 class="card-title"><?= $gallery['gallery_title']; ?></h5>
                 <p class="card-text">Ajouté par : <?= $gallery['pseudo_user']; ?> </p>
                 <p class="card-text"><?= $gallery['creation_date_fr']; ?></p>
-                <a href="index.php?action=viewPhoto&params=<?= $gallery['id_categories']; ?>" class="btn btn-primary">VOIR</a>
+                <a href="index.php?action=viewPhoto&params=<?= $gallery['gallery_id']; ?>" class="btn btn-primary">VOIR</a>
             </div>
         </div>
         <?php } ?>

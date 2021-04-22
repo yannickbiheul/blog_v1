@@ -63,5 +63,10 @@ class GalleryService {
         $this->_galleryDao->saveGalleryInDb($this->_gallery);
         return $this->_gallery;
     }
+
+    public function askOnePhoto($idPhoto) {
+        $photo = $this->_galleryDao->getOnePhoto($idPhoto);
+        return $photo;
+    }
     
 }
