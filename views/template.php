@@ -37,6 +37,9 @@
                         <a class="nav-link" aria-current="page" href="index.php?action=posts">Articles</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?action=showGallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="index.php?action=about">À propos</a>
                     </li>
                     <li class="nav-item">

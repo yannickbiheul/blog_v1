@@ -25,6 +25,9 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 22 avril 2021</p>
+            <li>Ajout section Gallery</li>
+        <br>
         <p>Le 14 avril 2021</p>
           <li>Modifs formulaire ajout article (admin).</li>
           <li>Ajout article Alex Kidd.</li>

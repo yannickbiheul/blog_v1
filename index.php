@@ -6,10 +6,12 @@ require('controllers/UserController.php');
 require('controllers/PostController.php');
 require('controllers/CommentController.php');
 require('controllers/MainController.php');
+require('controllers/GalleryController.php');
 $userController = new UserController;
 $postController = new PostController;
 $commentController = new CommentController;
 $mainController = new MainController;
+$galleryController = new GalleryController;
 
 if (isset($_GET['action']) && isset($_GET['params'])) {
 
@@ -24,6 +26,8 @@ if (isset($_GET['action']) && isset($_GET['params'])) {
         $commentController->$action($params);
     } else if (method_exists($mainController, $action)) {
         $mainController->$action($params);
+    } else if (method_exists($galleryController, $action)) {
+        $galleryController->$action($params);
     } else {
         $postController->home();
     }
@@ -40,6 +44,8 @@ if (isset($_GET['action']) && isset($_GET['params'])) {
         $commentController->$action();
     } else if (method_exists($mainController, $action)) {
         $mainController->$action();
+    } else if (method_exists($galleryController, $action)) {
+        $galleryController->$action();
     } else {
         $postController->home();
     }
