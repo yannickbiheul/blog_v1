@@ -19,10 +19,17 @@ $title = $photo['title_gallery'];
     <div class="row d-flex justify-content-center" style="margin-top:40px;">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
             <a href="assets/images/<?= $photo['photo_gallery'] ?>">
-                <img src="assets/images/<?= $photo['photo_gallery'] ?>" alt="<?= $photo['photo_gallery'] ?>" style="width:90%;">
+                <img src="assets/images/<?= $photo['photo_gallery'] ?>" alt="<?= $photo['photo_gallery'] ?>" style="width:100%;">
             <a>
         </div>
     </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <a href="index.php?action=showGallery" class="btn btn-primary">Retour Gallery</a>
+        </div>
+    </div>
+
 
     <!-- FORMULAIRE COMMENTAIRES -->
 
