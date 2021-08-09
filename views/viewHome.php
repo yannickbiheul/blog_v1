@@ -25,6 +25,9 @@ $title = 'Deskad | Accueil';
       </div>
       <div class="modal-body" style="color:#333">
       <ul>
+        <p>Le 03 aout 2021</p>
+            <li>Début du suivi de création de blog en Symfony</li>
+        <br>
         <p>Le 22 avril 2021</p>
             <li>Ajout section Gallery</li>
         <br>

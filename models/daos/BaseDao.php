@@ -5,7 +5,7 @@ class BaseDao {
     protected $_host = "localhost";
     protected $_dbname = "blog_v1";
     protected $_user = "root";
-    protected $_password = "";
+    protected $_password = "root";
 
     public function dbConnect() {
         try {
